@@ -1,0 +1,2 @@
+# eveal
+Wordpress Starter Theme
