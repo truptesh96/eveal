@@ -1,5 +1,5 @@
 <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<input type="search"  class="search-field" placeholder="Search the Blog" value="<?php echo get_search_query(); ?>" name="s" />
+	<input type="search" autocomplete="off" class="search-field" placeholder="Search the Blog" value="<?php echo get_search_query(); ?>" name="s" />
 	 <input type="hidden" name="post_type" value="post" />
 	<button type="submit" class="search-submit icon-search5"></button>
 </form>
@@ -9,7 +9,7 @@
 <script>
     jQuery(function($){
         function get_results(){
-            var url = window.location.origin+'/eveal/wp-json/vt/v1/posts/';
+            var url = window.location.origin+'/mindcode/wp-json/vt/v1/posts/';
             var request = $.ajax({ url: url , method: "GET", dataType: "json", });
             request.done(function(data) {
                 var response = data;
@@ -17,13 +17,10 @@
                     var result = response.map(function(res){
                         row = 
                         `<div class='row'>
-
-                            ${ (res.thumbnail) != false ? '<img src='"'${res.thumbnail}'"' alt="">' : ''}
-
                             <a href='${res.url}'>${res.title} </a>
                             <p> ${res.content}</p>
                         </div>`;
-                        return row;
+                        return row; 
                     }).join('');
                     $('.scontent').html(result);
                 }else{

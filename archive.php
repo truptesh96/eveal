@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<div class="page-wrap container">
+	<div class="page-wrap container has-sidebar">
 	<div class="site-main">
 
 		<?php if ( have_posts() ) : ?>
@@ -24,7 +24,7 @@ get_header();
 
 			<?php
 			/* Start the Loop */
-			echo "<div class='blogs grid'>";
+			echo "<div class='blogs dgrid tab-col2'>";
 			while ( have_posts() ) :
 				the_post();
 				get_template_part( 'template-parts/content', get_post_type() );
@@ -39,8 +39,9 @@ get_header();
 
 		endif;
 		?>
-</div>
-		<?php get_sidebar(); ?>
+    </div>
+		
+        <?php get_sidebar(); ?>
 	</div>
 <?php
 get_footer();

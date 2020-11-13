@@ -11,8 +11,8 @@
 
 ?>
 	
-	<div class="cta">
-		<div class="container wrap dgrid">
+	<div class="cta-link">
+		<div class="container wrap dgrid vcenter">
 		<div class="content">
 			<h3>Got a Project or Partnership in Mind?</h3>
 		</div>
@@ -23,21 +23,11 @@
 
 	<footer id="colophon" class="site-footer">
 		<div class="container">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'eveal' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'eveal' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'eveal' ), 'eveal', '<a href="http://underscores.me/">Truptesh Patel</a>' );
-				?>
-		</div><!-- .site-info -->
+            <div class="copyright">
+                <p>This is Footer</p>
+            </div>
 		</div>
-	</footer><!-- #colophon -->
+	</footer>
 
 	<!-- Mobile Navigation -->
 	<ul class="mob-nav dgrid align-center">
@@ -54,7 +44,7 @@
 			<a href="" class="icn call icon-phone"></a>
 		</li>
 		<li>
-			<a href="tel:" class="icn about icon-user1"></a>
+			<a href="" class="icn about icon-user1"></a>
 			<span>About</span>
 		</li>
 		<li>
@@ -101,8 +91,6 @@
 				$(this).slick(slider_settings);
 			});
 
-
-
 			$(".search-field").keyup(function(){
 				if($(this).val().length > 0){
 					$(this).siblings('.search-submit').addClass('enable');
@@ -111,6 +99,13 @@
 				}
 			});
 
+            /*----- Mobile Naigation ------*/
+            /*$('#primary-menu .menu-item.menu-item-has-children > a').after().click(function(e){
+                e.preventDefault();
+                $(this).toggleClass('open');
+            });*/
+            /*----- Mobile Naigation Ends ------*/
+            
 			/*----- Popups-----*/
 			$('.mob-nav a.search').click(function(){ $('.popup.search').fadeIn('500'); });
 			$('.popupToggle').click(function(){ $(this).parents('.popup').fadeOut('200'); });
@@ -137,12 +132,8 @@
 
 
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-
-
-
 <?php the_field('bottom_css', 'option'); ?>
+
 </body>
 </html>

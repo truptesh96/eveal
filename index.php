@@ -13,7 +13,7 @@
  */
 get_header();
 ?>
-	<div class="page-wrap container">
+	<div class="page-wrap container has-sidebar">
 		<div class="site-main">
 			<?php
 			if ( have_posts() ) :

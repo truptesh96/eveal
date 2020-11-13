@@ -130,7 +130,7 @@ function eveal_widgets_init() {
 			'name'          => esc_html__( 'Sidebar', 'eveal' ),
 			'id'            => 'sidebar-1',
 			'description'   => esc_html__( 'Add widgets here.', 'eveal' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'before_widget' => '<section id="%1$s" class="sidebar widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h3 class="widget-title">',
 			'after_title'   => '</h3>',
@@ -193,43 +193,40 @@ function paragraphFilter($content) {
 add_filter('the_content', 'paragraphFilter');
 
 
-
-
-
-
 /*------------------- Creating Custom Post without Plugin -----------------------*/
 /* 
 	Step1: Create CPT for News
 	Step2: 
 */
 
-function news_post() {
+function our_team() {
   $labels = array(
-    'name'               => _x( 'News', 'post type general name' ),
-    'singular_name'      => _x( 'News', 'post type singular name' ),
-    'add_new'            => _x( 'Add New', 'News' ),
-    'add_new_item'       => __( 'Add New News' ),
-    'edit_item'          => __( 'Edit News' ),
-    'new_item'           => __( 'New News' ),
-    'all_items'          => __( 'All News' ),
-    'view_item'          => __( 'View News' ),
-    'search_items'       => __( 'Search News' ),
-    'not_found'          => __( 'No News found' ),
-    'not_found_in_trash' => __( 'No News found in the Trash' ), 
+    'name'               => _x( 'Team', 'post type general name' ),
+    'singular_name'      => _x( 'Team', 'post type singular name' ),
+    'add_new'            => _x( 'Add New', 'Member' ),
+    'add_new_item'       => __( 'Add New Member' ),
+    'edit_item'          => __( 'Edit Member' ),
+    'new_item'           => __( 'New Member' ),
+    'all_items'          => __( 'Our Team' ),
+    'view_item'          => __( 'View Team' ),
+    'search_items'       => __( 'Search Team' ),
+    'not_found'          => __( 'No Member found' ),
+    'not_found_in_trash' => __( 'No Member found in the Trash' ), 
     'parent_item_colon'  => '',
-    'menu_name'          => 'Team News'
+    'menu_name'          => 'Our team'
   );
   $args = array(
     'labels'        => $labels,
     'description'   => '',
     'public'        => true,
     'menu_position' => 5,
-    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+    'supports'      => array( 'title', 'thumbnail', 'excerpt', 'comments', 'custom_fields' ),
     'has_archive'   => true,
   );
-  register_post_type( 'News', $args ); 
+  register_post_type( 'Team', $args ); 
 }
-add_action( 'init', 'news_post' );
+add_action( 'init', 'our_team' );
+
 
 function taxonomies_News() {
   $labels = array(
@@ -330,6 +327,13 @@ if(function_exists('acf_add_options_page') ) {
 		'parent_slug'	=> 'theme-general-settings',
 		'redirect'		=> false
 	));
+    
+    acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Settings',
+		'menu_title'	=> 'Theme Settings',
+		'parent_slug'	=> 'theme-general-settings',
+		'redirect'		=> false
+	));
 
 	acf_add_options_sub_page(array(
 		'page_title' 	=> 'Theme Header Settings',
@@ -392,15 +396,14 @@ function vt_posts(){
 	$data = [];
 	$i = 0;
 
-	function cats($n){ return $n->cat_ID; }
+	function cats($n){ return get_cat_name($n -> cat_ID); }
 
 	foreach($posts as $post) {
 		$data[$i]['title'] = $post->post_title.' '.$slice;
 		$data[$i]['url'] = get_permalink($post->ID);
 		$data[$i]['thumbnail'] = get_the_post_thumbnail_url($post->ID);
 		$data[$i]['content'] = wp_strip_all_tags($post->post_content, $remove_breaks = true);
-		$data[$i]['Categories'] = array_map('cats', get_the_category( $post->ID));
-		$data[$i]['Categories_name'] = get_the_category( $post->ID);
+		$data[$i]['Categories'] = array_map('cats', get_the_category($post->ID));
 		$i++;
 	}
 	return $data;
@@ -409,3 +412,7 @@ function vt_posts(){
 add_action('rest_api_init', function(){
 	register_rest_route('vt/v1','posts',[ 'methods' => 'GET', 'callback' => 'vt_posts' ]);
 });
+
+
+/*--------- Disable woocommerce all styleseets ----------*/
+add_filter( 'woocommerce_enqueue_styles', '__return_false' );

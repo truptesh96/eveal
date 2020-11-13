@@ -22,29 +22,32 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
+/*---------- Reset CSS -------*/
+/*------ Theme Colors ---------*/
+/*----- Mixins ------*/
 /*---------- Reset CSS ------------*/
 *:focus {
   outline: none;
 }
 
+*:hover {
+  transition: 0.7s all ease;
+}
+
 body {
   background: #fff;
-  font-family: "Lato";
+  font-family: "Lato", sans-serif;
   margin: 0;
   padding: 0;
+  color: #666;
 }
 
 a {
-  color: green;
+  color: #055175;
   text-decoration: none;
 }
 a:hover {
-  color: blue;
-}
-
-a, label, p, li {
-  line-height: 1.4;
-  font-size: 12px;
+  color: #f5aa5e;
 }
 
 /*---------- Default Classes ---------*/
@@ -93,7 +96,7 @@ a, label, p, li {
 }
 
 /*---------- Spacing and Other Typos --------------*/
-input, textarea, .btn, section, figure, form {
+input, textarea, .btn, section, figure, form, li, ol, ul, dl, .button {
   box-sizing: border-box;
 }
 
@@ -112,6 +115,9 @@ img.fit {
   object-fit: cover;
   object-position: center center;
 }
+img.rounded {
+  border-radius: 50%;
+}
 
 .dcell, .dtab, form {
   max-width: 100%;
@@ -127,8 +133,7 @@ li {
   list-style: none;
 }
 
-textarea, button, input:not([type=checkbox]), select {
-  display: block;
+.button, textarea, button, input:not([type=checkbox]), select {
   padding: 8px 12px;
   line-height: 1;
   border-radius: 0;
@@ -144,8 +149,8 @@ textarea {
   resize: none;
 }
 
-select, textarea, input:not([type=submit]):not([type=reset]):not([type=checkbox]) {
-  border: 2px solid #666;
+button, .button, select, textarea, input:not([type=submit]):not([type=reset]):not([type=checkbox]) {
+  border: 1px solid #666;
   outline: none;
 }
 
@@ -161,26 +166,108 @@ figure figcaption {
   font-size: 12px;
 }
 
-blockquote {
-  padding: 20px 15px;
-  border-left: 2px solid #666;
-}
-
 select {
   --web-appearance: none;
   --moz-appearance: none;
 }
 
-p, h1, h2, h3, h4, h5, h6, .entry-title {
-  margin: 0 0 15px;
-}
-p:last-child, h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child, .entry-title:last-child {
-  margin: 0;
-}
-
 .container {
   margin: 0 auto;
   padding: 0 15px;
+}
+
+/*----------- Text-elements --------*/
+h1, h2, h3, h4, h5, h6, b {
+  color: #444;
+  font-family: "Raleway", sans-serif;
+}
+
+p, h1, h2, h3, h4, h5, h6, .entry-title, li:not(.menu-item) {
+  margin: 0 0 0.8rem;
+}
+p:last-child, h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child, .entry-title:last-child, li:not(.menu-item):last-child {
+  margin: 0;
+}
+
+h1, .h1 {
+  font-size: 24px;
+}
+
+h2, .h2 {
+  font-size: 22px;
+}
+
+h3, .h3 {
+  font-size: 20px;
+}
+
+h4, .h4 {
+  font-size: 18px;
+}
+
+h5, .h5 {
+  font-size: 16px;
+}
+
+a, span, p, li, span {
+  line-height: 1.4;
+}
+
+input, textarea, a, label, p, li, h6, .h6, p {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+blockquote {
+  padding: 20px 15px;
+  border-left: 2px solid #666;
+}
+
+.btn {
+  padding: 12px 14px;
+  line-height: 1;
+  border: 1px solid #f5aa5e;
+  color: #f5aa5e;
+  text-align: center;
+}
+.btn:hover {
+  color: #055175;
+  border-color: #055175;
+}
+.btn.primary {
+  background: #055175;
+  color: #f5aa5e;
+  border-color: #055175;
+}
+.btn.primary:hover {
+  color: #055175;
+  background: #f5aa5e;
+  border-color: #f5aa5e;
+}
+.btn.secondary {
+  color: #055175;
+  background: #f5aa5e;
+  border-color: #f5aa5e;
+}
+.btn.secondary:hover {
+  background: #055175;
+  color: #f5aa5e;
+  border-color: #055175;
+}
+
+/*------ Tables ----------*/
+table {
+  width: 100%;
+  border-spacing: 0;
+  border: 1px solid #055175;
+  border-collapse: collapse;
+}
+table td, table th {
+  border: 1px solid #055175;
+  padding: 8px 12px;
+}
+table th {
+  letter-spacing: 1px;
 }
 
 /*---------- Spacing and Other Typos Ends --------------*/
@@ -253,86 +340,27 @@ p:last-child, h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:las
 }
 
 /*---------- Reset CSS Ends ------------*/
-/*-------- Reset Css --------*/
-#primary-menu .menu-item.menu-item-has-children > a {
-  position: relative;
+/*--------------- CTA link ---------*/
+.cta-link {
+  padding: 40px 0;
+  background: antiquewhite;
 }
-#primary-menu .menu-item.menu-item-has-children > a:after {
-  content: "❯";
-  display: block;
-  position: absolute;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%) rotate(90deg);
-  right: 5px;
-  transition: 0.5s all ease;
-  font-weight: bold;
-}
-#primary-menu .menu-item.menu-item-has-children:hover > a:after {
-  transform: translateY(-50%) rotate(-90deg);
-}
-#primary-menu .menu-item a {
-  padding: 10px 20px;
-}
-
-/*--------- Mobile Navigation ---------*/
-.main-navigation {
-  position: fixed;
-  height: 100vh;
-  top: 150vh;
-  left: 0;
-  width: 100vw;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.5s all ease;
-  overflow-y: scroll;
-}
-
-.menu-close {
-  padding: 15px;
-  color: #666;
-}
-
-body.menu-open {
-  overflow: hidden;
-}
-body.menu-open .main-navigation {
-  top: 0;
-  visibility: visible;
-  opacity: 1;
-  background: #fff;
-}
-body.menu-open .main-navigation .sub-menu {
-  margin-left: 15px;
-}
-
-.site-header .menu-item a {
-  padding: 10px 25px 10px 0;
-  display: block;
-}
-.site-header .focus.menu-item-has-children .sub-menu {
-  visibility: visible;
-  opacity: 1;
-}
-
-/*--------- Mobile Navigation Ends ---------*/
-.ptitle {
-  font-size: 32px;
-}
-.ptitle .subtitle {
-  display: block;
-  font-size: 60%;
-  font-style: italic;
-}
-
-.page-wrap {
-  margin: 40px auto 60px;
-  display: grid;
-  grid-gap: 40px;
-  grid-template-columns: 0.75fr 0.25fr;
+.cta-link .wrap {
+  grid-template-columns: 1fr auto;
 }
 
 /*---------- Sidebar ------------*/
+.widget-area .widget-title {
+  padding: 24px 16px;
+  background: #000;
+  margin: 0 -16px 24px;
+  color: #f4f4f4;
+}
+.widget-area .sidebar {
+  background: #f4f4f4;
+  padding: 0 16px 24px;
+}
+
 .widget {
   margin: 0 0 25px;
 }
@@ -380,18 +408,6 @@ body.menu-open .main-navigation .sub-menu {
 }
 
 /*----- 404 Page Ends -------*/
-/*----- CTA -------*/
-.cta {
-  padding: 20px 0;
-  background: #f4f4f4;
-}
-.cta .wrap {
-  grid-gap: 20px;
-  align-items: center;
-  grid-template-columns: 1fr auto;
-}
-
-/*----- CTA Ends -------*/
 /*-------- blogs  --------*/
 .blogs {
   padding: 40px 0;
@@ -399,9 +415,6 @@ body.menu-open .main-navigation .sub-menu {
 
 .blog > a {
   display: block;
-}
-.blog h2 {
-  color: #666;
 }
 .blog p {
   color: #999;
@@ -458,11 +471,8 @@ body.menu-open .main-navigation .sub-menu {
   padding: 5px 12px;
   background: #666;
   border-radius: 10px;
-  margin-right: 8px;
   transition: 0.5s all ease;
-}
-.slick-dots li:last-child {
-  margin: 0;
+  margin: 0 10px 0 0;
 }
 .slick-dots li.slick-active, .slick-dots li:hover {
   background: blue;
@@ -509,11 +519,196 @@ body.menu-open .main-navigation .sub-menu {
 }
 
 /*----------- slick Ends -----------*/
+/*---------- Header CSS -------*/
+/*-------- Reset Css --------*/
+#masthead {
+  box-shadow: 0 0 8px #f4f4f4;
+}
+
+#primary-menu .menu-item.menu-item-has-children > a {
+  position: relative;
+}
+#primary-menu .menu-item.menu-item-has-children > a:after {
+  content: "❯";
+  display: block;
+  position: absolute;
+  position: absolute;
+  top: 50%;
+  transition: 0.5s all ease;
+  font-weight: bold;
+}
+#primary-menu .menu-item.menu-item-has-children:hover > a:after {
+  transform: translateY(-50%) rotate(-90deg);
+}
+#primary-menu .menu-item a {
+  padding: 10px 20px;
+}
+#primary-menu .current_page_item > a, #primary-menu .current-menu-item > a {
+  color: #f5aa5e;
+}
+
+/*--------- Mobile Navigation ---------*/
+.main-navigation {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: -150px;
+  width: 100vw;
+  z-index: 3;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s all ease;
+  overflow-y: scroll;
+  max-width: 320px;
+}
+
+.menu-close {
+  padding: 15px;
+  color: #666;
+  background: #f5aa5e;
+  position: fixed;
+  right: calc(100% + 150px);
+  top: 0;
+  transition: 0.5s all ease;
+  z-index: 5;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+body.menu-open .main-navigation {
+  top: 0;
+  visibility: visible;
+  opacity: 1;
+  background: #fff;
+  left: 0;
+  box-shadow: 0 0 20px #e4dbdb;
+}
+body.menu-open .menu-close {
+  right: calc(100% - 320px);
+}
+body.menu-open .open + .sub-menu {
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+  transition: 0.7s all ease;
+  background: #e4dbdb;
+}
+body.menu-open #primary-menu {
+  padding: 20px 0;
+  box-sizing: border-box;
+  padding: 0 0 150px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+body.menu-open #primary-menu .menu-item.menu-item-has-children > a:after {
+  transform: translateY(-50%);
+  right: 0;
+  padding: 10px 12px;
+  height: 100%;
+  box-sizing: border-box;
+}
+body.menu-open #primary-menu .menu-item.menu-item-has-children > a.open:after {
+  transform: translateY(-50%) rotate(90deg);
+}
+body.menu-open #primary-menu .menu-item a {
+  padding: 10px 30px 10px 15px;
+}
+body.menu-open .sub-menu {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
+
+.site-header .menu-item a {
+  padding: 10px 25px 10px 0;
+  display: block;
+}
+.site-header .focus.menu-item-has-children .sub-menu {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------- Mobile Navigation Ends ---------*/
+/*---------- Footer CSS -------*/
+/*---------- Home CSS -------*/
+/*---------- blogs CSS -------*/
+.blogs .blog {
+  border-radius: 12px;
+  box-shadow: -4px -4px 8px #e9e9e9, 0 4px 8px #eee;
+  padding: 0 0 16px;
+}
+.blogs .blog h2, .blogs .blog p {
+  padding: 0 15px;
+}
+.blogs .blog img {
+  border-bottom-right-radius: 55px;
+  width: 100%;
+  min-height: 175px;
+  object-position: center;
+  object-fit: cover;
+}
+.blogs .blog:hover {
+  box-shadow: -4px -4px 8px #f4f4f4, 0 4px 8px #e9e9e9;
+}
+.posts-data .blogs .blog {
+  padding: 14px 0;
+}
+
+.single-blog {
+  margin: 0 0 40px;
+}
+.single-blog .entry-content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.single-blog .blog-banner {
+  position: relative;
+  margin: 0 0 24px;
+}
+.single-blog .blog-banner img {
+  width: 100%;
+}
+.single-blog .blog-banner h1 {
+  position: absolute;
+  bottom: 3px;
+  padding: 40px 16px 32px;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 40px;
+}
+.single-blog .nav-links {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/*---------- Page CSS -------*/
+.page-wrap {
+  margin: 30px auto 50px;
+  display: grid;
+  grid-gap: 25px;
+}
+
+.site-main + .widget-area {
+  position: sticky;
+}
+
+/*---------- Our Team Template CSS -------*/
+.profile {
+  padding: 0 14px 16px;
+}
+
+/*---------- Page CSS -------*/
 .cat-filter {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 15px;
+  padding: 14px 16px 0;
   border-bottom: 2px solid #f4f4f4;
 }
 .cat-filter li {
@@ -521,16 +716,44 @@ body.menu-open .main-navigation .sub-menu {
   text-transform: capitalize;
   background: transparent;
   color: #666;
+  margin-right: 6px;
 }
 .cat-filter li:hover {
   cursor: pointer;
 }
-.cat-filter li.active {
-  background: #f4f4f4;
+.cat-filter li.active, .cat-filter li:hover {
+  background: #f5aa5e;
+  color: #055175;
   border-radius: 4px;
-  transtion: 0.5s all ease;
+}
+.cat-filter li:last-child {
+  margin: 0 0 0.8rem;
 }
 
+/*---------- Page CSS -------*/
+/*------ Ajax Search Quick Result -----*/
+.scontent {
+  display: none;
+  background: #f4f4f4;
+}
+.scontent .row {
+  padding: 8px 12px;
+  background: #f4f4f4;
+  color: #333;
+  border-bottom: 2px solid #aaa;
+  display: none;
+}
+.scontent p {
+  display: none;
+  font-size: 0;
+}
+.scontent .row a {
+  font-size: 10px;
+  display: block;
+}
+
+/*------ Ajax Search Quick Result Ends -----*/
+/*---------- Page CSS -------*/
 /*--------- Flexible --------*/
 .flexible.main {
   margin: 40px 0;
@@ -588,12 +811,14 @@ body.menu-open .main-navigation .sub-menu {
 }
 .accordion .item.open .title:after {
   content: "—";
+  font-size: 30px;
+  font-weight: 600;
 }
 .accordion .title {
   padding: 15px 45px 15px 15px;
   line-height: 1;
   position: relative;
-  background: #f4f4f4;
+  background: linear-gradient(90deg, #a7d6ec, #fbd4b2);
   border: 2px solid #f2f2f2;
 }
 .accordion .title:after {
@@ -603,7 +828,8 @@ body.menu-open .main-navigation .sub-menu {
   top: 50%;
   transform: translateY(-50%);
   right: 15px;
-  font-size: 150%;
+  font-size: 45px;
+  font-weight: normal;
 }
 
 /*-------- Accordion Ends --------*/
@@ -673,8 +899,6 @@ body.menu-open .main-navigation .sub-menu {
 }
 
 /*---------- Vertical Process Ends ------------*/
-/*-------- Youtube Gallery ----------*/
-/*-------- Youtube Gallery Ends ----------*/
 /*--------- Skill Bars ----------*/
 .skill .bar {
   margin: 0 0 12px;
@@ -693,6 +917,37 @@ body.menu-open .main-navigation .sub-menu {
   margin: 0 0 20px;
 }
 
+/*--------- Feature Content ------------*/
+.featured-content {
+  padding: 40px 0;
+  position: relative;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.featured-content .content {
+  max-width: 768px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+}
+.featured-content:after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: rgba(50, 50, 100, 0.5);
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+
+/*--------- Feature Content Ends ------------*/
+/*-------- Youtube Gallery ----------*/
+/*-------- Youtube Gallery Ends ----------*/
+/*---------- Page CSS -------*/
 .mob-col2, .mob-col3, .mob-col4, .tab-col2, .tab-col3, .tab-col4, .desk-col2, .desk-col3, desk-col4 {
   grid-gap: 25px;
 }
@@ -747,6 +1002,14 @@ body.menu-open .main-navigation .sub-menu {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
+  .page-wrap {
+    margin: 40px auto 60px;
+    grid-gap: 40px;
+  }
+  .page-wrap.has-sidebar {
+    grid-template-columns: 0.75fr 0.25fr;
+  }
+
   /*--------- Desktop Navigation ---------*/
   .site-header {
     padding: 15px 0;
@@ -762,6 +1025,7 @@ body.menu-open .main-navigation .sub-menu {
     visibility: visible;
     position: relative;
     left: inherit;
+    max-width: 100%;
     top: inherit;
     height: auto;
     overflow: inherit;
@@ -770,10 +1034,20 @@ body.menu-open .main-navigation .sub-menu {
   }
 
   #primary-menu {
-    display: block;
+    position: relative;
+    text-align: right;
+  }
+  #primary-menu .menu-item.menu-item-has-children > a {
+    position: relative;
+  }
+  #primary-menu .menu-item.menu-item-has-children > a:after {
+    transform: translateY(-50%) rotate(90deg);
+    right: 5px;
   }
   #primary-menu > li.menu-item {
     display: inline-block;
+  }
+  #primary-menu > li.menu-item:not(.mega-menu) {
     position: relative;
   }
   #primary-menu > li.menu-item:hover > .sub-menu {
@@ -786,16 +1060,18 @@ body.menu-open .main-navigation .sub-menu {
     left: 0;
     padding: 15px 0 15px 15px;
     z-index: 999;
-    background: #f4f4f4;
+    box-sizing: border-box;
     opacity: 0;
     visibility: hidden;
     transition: 0.5s all ease;
     border: 2px solid #eee;
+    background: #fff;
   }
   #primary-menu .sub-menu a {
     padding: 8px 0;
     display: block;
     width: 120px;
+    text-align: left;
   }
   #primary-menu .sub-menu .menu-item.menu-item-has-children > a {
     padding-right: 20px;
@@ -816,6 +1092,43 @@ body.menu-open .main-navigation .sub-menu {
     left: 100%;
   }
 
+  #primary-menu .mega-menu:hover > .sub-menu {
+    bottom: inherit;
+  }
+  #primary-menu .mega-menu:hover > .sub-menu .sub-menu {
+    visibility: visible;
+    opacity: 1;
+  }
+  #primary-menu .mega-menu > .sub-menu {
+    width: 100%;
+    columns: 3;
+    padding: 18px 22px;
+    column-gap: 48px;
+    column-rule: double;
+    bottom: 1000vh;
+  }
+  #primary-menu .mega-menu > .sub-menu li {
+    padding: 0;
+  }
+  #primary-menu .mega-menu > .sub-menu a {
+    width: 100%;
+  }
+  #primary-menu .mega-menu > .sub-menu :hover .sub-menu {
+    padding: 0;
+  }
+  #primary-menu .mega-menu > .sub-menu .sub-menu {
+    left: inherit;
+    top: inherit;
+    box-shadow: none;
+    border: none;
+  }
+  #primary-menu .mega-menu > .sub-menu .menu-item.menu-item-has-children .sub-menu {
+    padding: 0;
+  }
+  #primary-menu .mega-menu > .sub-menu .menu-item.menu-item-has-children a:after {
+    display: none;
+  }
+
   /*--------- Desktop Navigation Ends ---------*/
 }
 /*----------- desktop View----------*/
@@ -825,7 +1138,7 @@ body.menu-open .main-navigation .sub-menu {
   }
 
   a, label, p, li {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 /*----------- desktop View----------*/
@@ -834,5 +1147,94 @@ body.menu-open .main-navigation .sub-menu {
     max-width: 1400px;
   }
 }
+/*---------- Woocommerce CSS -------*/
+/*---- Product Listing ---*/
+.product {
+  position: relative;
+}
+.product .woocommerce-LoopProduct-link {
+  display: block;
+}
+.product .price del span {
+  text-decoration: line-through;
+  color: #ff8c16;
+}
+.product .added_to_cart.wc-forward {
+  color: green;
+  margin-left: 8px;
+}
+.product .onsale {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: green;
+  color: #fff;
+  padding: 8px;
+}
+
+.products {
+  display: grid;
+  grid-gap: 24px;
+  margin: 40px 0;
+}
+.products.columns-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.products.columns-4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.products.columns-5 {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.products.columns-6 {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+/*---- Product Listing Ends ---*/
+/*------------ Single Product Page ----------*/
+/*------------ Single Product Page Ends ----------*/
+/*--------- Cart Page --------*/
+/*--------- Cart Page Ends --------*/
+/**------------------- Checkout Page ---------------------**/
+.woocommerce-form-coupon-toggle {
+  margin: 15px 0;
+}
+
+.woocommerce-billing-fields .form-row, .woocommerce-EditAccountForm.edit-account .form-row, .woocommerce-address-fields__field-wrapper .form-row {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 290px 1fr;
+}
+
+/**------------------- Checkout Page Ends ---------------------**/
+/*----------------- My account Page ---------------------*/
+.woocommerce-MyAccount-navigation li {
+  display: inline-block;
+  margin: 0;
+  background: #f4f4f4;
+}
+.woocommerce-MyAccount-navigation li a {
+  color: #666;
+  padding: 8px 12px 4px;
+  border-bottom: 4px solid #f4f4f4;
+}
+.woocommerce-MyAccount-navigation li.is-active, .woocommerce-MyAccount-navigation li:hover {
+  background: #000;
+}
+.woocommerce-MyAccount-navigation li.is-active a, .woocommerce-MyAccount-navigation li:hover a {
+  color: #fff;
+  border-bottom: 4px solid #36ef36;
+}
+
+.woocommerce-MyAccount-content {
+  padding: 16px;
+  border: 2px solid #f4f4f4;
+}
+.woocommerce-MyAccount-content input:not([type=submit]):not([type=reset]):not([type=checkbox]),
+.woocommerce-MyAccount-content select, .woocommerce-MyAccount-content textarea {
+  border-color: #666;
+}
+
+/*----------------- My account Page Ends ---------------------*/
 
 /*# sourceMappingURL=style.css.map */

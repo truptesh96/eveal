@@ -18,6 +18,7 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -31,6 +32,13 @@
 
 <?php wp_body_open(); ?>
 <header id="masthead">
+
+	<div class="head-top">
+		<div class="container">
+			
+		</div>	
+	</div>
+
 	<div class="container">
 	<div class="site-header dgrid vcenter">
 	<div class="site-branding">
