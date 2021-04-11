@@ -4,18 +4,32 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package eveal
+ * @package Eveal
  */
 
 ?>
-<article>
-	
-	<article class="blog">
-	<a href="<?php echo get_permalink(); ?>" rel="bookmark">
-		<?php the_post_thumbnail( 'medium' ); ?>
-		<h2><?php echo the_title(); ?></h2>
-		<p><?php echo the_excerpt(); ?></p>
-	</a>
-	</article>
 
-</article>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<header class="entry-header">
+		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+
+		<?php if ( 'post' === get_post_type() ) : ?>
+		<div class="entry-meta">
+			<?php
+			eve_posted_on();
+			eve_posted_by();
+			?>
+		</div><!-- .entry-meta -->
+		<?php endif; ?>
+	</header><!-- .entry-header -->
+
+	<?php eve_post_thumbnail(); ?>
+
+	<div class="entry-summary">
+		<?php the_excerpt(); ?>
+	</div><!-- .entry-summary -->
+
+	<footer class="entry-footer">
+		<?php eve_entry_footer(); ?>
+	</footer><!-- .entry-footer -->
+</article><!-- #post-<?php the_ID(); ?> -->

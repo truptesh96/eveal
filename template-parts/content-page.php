@@ -1,32 +1,33 @@
 <?php
 /**
- * Template part for displaying page content in page.php
+ * Template part for displaying single post content in page.php
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package eveal
+ * @package Eveal
  */
 
 ?>
 
-<article>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header>
+	</header><!-- .entry-header -->
 
-	<?php eveal_post_thumbnail(); ?>
+	<?php eve_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
 		the_content();
+
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'eveal' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'eve' ),
 				'after'  => '</div>',
 			)
 		);
 		?>
-	</div>
+	</div><!-- .entry-content -->
 
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">
@@ -35,7 +36,7 @@
 				sprintf(
 					wp_kses(
 						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Edit <span class="screen-reader-text">%s</span>', 'eveal' ),
+						__( 'Edit <span class="screen-reader-text">%s</span>', 'eve' ),
 						array(
 							'span' => array(
 								'class' => array(),
@@ -48,6 +49,6 @@
 				'</span>'
 			);
 			?>
-		</footer>
+		</footer><!-- .entry-footer -->
 	<?php endif; ?>
-</article>
+</article><!-- #post-<?php the_ID(); ?> -->

@@ -1,0 +1,60 @@
+.hamIcon{ width: 35px; background: inherit; border: inherit; position: relative; background: inherit; padding: 0;
+	min-width: inherit; box-shadow: none;
+	span{ display: block; height: 3px; background: #666; margin: 4px 0; }
+	
+	&:after, &:before{ content: ''; display: block; height: 3px; border-radius: 8px; background: #666; opacity: 1;
+	transition: 0.75s all ease; position: relative; top: inherit; left: inherit; border: none; width: 100%; }
+
+	&:hover, &:active, &:focus{ border: none; outline: none; background: none; box-shadow: none;
+		&:after, &:before{ height: 3px; }
+	}
+
+	&.open{
+		span{ opacity: 0; }
+		&:after, &:before{ background: #e4ab0d; }
+		&:after{ transform: rotate(-45deg) translate(5px, -5px); }
+		&:before{ transform:rotate(45deg) translate(5px, 5px); }
+	}
+
+}
+
+
+/*--------- Lock Header UP Down --------*/
+@keyframes sticky_head_anim{ 0%{ top: -200px; } 100% { top: 0; } }
+.site-header.sticky{ position: fixed; animation: sticky_head_anim 1s ease; background: rgba(255,255,255,0.85); width: 100%; 
+z-index: 999; }
+/*--------- Lock Header UP Down Ends --------*/
+
+
+/*---------- Mobile Menu --------------*/
+@keyframes menuAnim{
+	0%{ right: -50%; }
+	100%{ right: 0; }
+}
+
+.menu-open{ overflow: hidden; 
+	.main-navigation{ top: 0; right: 0; width: 100vw; height: 100vh; padding: 24px 28px 32px; background: #fff; 
+	box-sizing: border-box; position: fixed; animation: 1s ease menuAnim; z-index: 999; max-width: 450px; }
+
+	.hamIcon{ margin: 0 auto 24px; display: block; }
+
+	.site-header{ 
+		.menu-site-menu-container{ display: table; width: 100%; height: 100%; overflow: auto;
+			ul{ display: table-cell; vertical-align: middle; }
+		}
+	}
+
+}
+
+
+.site-header{ padding: 12px 0;
+	.head-wrap{ display: flex; align-items: center; justify-content: space-between; }
+	.menu{ display: none; }
+	.site-branding{ padding-right: 35px;
+		a{ max-width: 200px; }
+	 }
+
+	a{ font-size: 24px; line-height: 1.5; margin: 0 0 12px; font-family: "Playfair Display", serif; display: block;
+    text-transform: uppercase; font-weight: 600; letter-spacing: 2px; }
+
+}

@@ -8,39 +8,39 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package eveal
+ * @package Eveal
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses eveal_header_style()
+ * @uses eve_header_style()
  */
-function eveal_custom_header_setup() {
+function eve_custom_header_setup() {
 	add_theme_support(
 		'custom-header',
 		apply_filters(
-			'eveal_custom_header_args',
+			'eve_custom_header_args',
 			array(
 				'default-image'      => '',
 				'default-text-color' => '000000',
 				'width'              => 1000,
 				'height'             => 250,
 				'flex-height'        => true,
-				'wp-head-callback'   => 'eveal_header_style',
+				'wp-head-callback'   => 'eve_header_style',
 			)
 		)
 	);
 }
-add_action( 'after_setup_theme', 'eveal_custom_header_setup' );
+add_action( 'after_setup_theme', 'eve_custom_header_setup' );
 
-if ( ! function_exists( 'eveal_header_style' ) ) :
+if ( ! function_exists( 'eve_header_style' ) ) :
 	/**
 	 * Styles the header image and text displayed on the blog.
 	 *
-	 * @see eveal_custom_header_setup().
+	 * @see eve_custom_header_setup().
 	 */
-	function eveal_header_style() {
+	function eve_header_style() {
 		$header_text_color = get_header_textcolor();
 
 		/*

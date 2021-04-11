@@ -4,3 +4,11 @@
  * Handles toggling the navigation menu for small screens and enables TAB key
  * navigation support for dropdown menus.
  */
+
+jQuery(function($){
+
+	$('.hamIcon').click(function(){
+		$(this).toggleClass('open').parents('body').toggleClass('menu-open');
+	});
+
+})

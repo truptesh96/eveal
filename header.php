@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package eveal
+ * @package Eveal
  */
 
 ?>
@@ -16,61 +16,29 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+	
+
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 	<?php wp_head(); ?>
-
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
-
-	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-	<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-
 </head>
 
 <body <?php body_class(); ?>>
-
-<?php the_field('head_css', 'option'); ?>
-
 <?php wp_body_open(); ?>
-<header id="masthead">
+<div id="page" class="site">
+	<header class="site-header">
+		<div class="wrapper head-wrap">
+			<div class="site-branding">
+				<?php the_custom_logo(); ?>			
+			</div><!-- .site-branding -->
 
-	<div class="head-top">
-		<div class="container">
-			
-		</div>	
-	</div>
-
-	<div class="container">
-	<div class="site-header dgrid vcenter">
-	<div class="site-branding">
-		<?php
-		the_custom_logo();
-		if ( is_front_page() && is_home() ) :
-			?>
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php
-		else :
-			?>
-			<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-		endif;
-		$eveal_description = get_bloginfo( 'description', 'display' );
-		if ( $eveal_description || is_customize_preview() ) :
-			?>
-			<p class="site-description"><?php echo $eveal_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-		<?php endif; ?>
-	</div><!-- .site-branding -->
-
-	<nav id="site-navigation" class="main-navigation">
-		<a href="javascript:void(0)" class='icon-cross menu-close'></a>
-		<?php
-		wp_nav_menu(
-			array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			)
-		);
-		?>
-	</nav><!-- #site-navigation -->
-	</div>
-	</div>
-</header><!-- #masthead -->
+			<nav id="site-navigation" class="main-navigation">
+				<button aria-label="menu-trigger" class="hamIcon" aria-controls="primary-menu" aria-expanded="false"><span></span></button>
+				<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu', )); ?>
+			</nav><!-- #site-navigation -->
+		</div>
+	</header>

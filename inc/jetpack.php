@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package eveal
+ * @package Eveal
  */
 
 /**
@@ -14,13 +14,13 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function eveal_jetpack_setup() {
+function eve_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support(
 		'infinite-scroll',
 		array(
 			'container' => 'main',
-			'render'    => 'eveal_infinite_scroll_render',
+			'render'    => 'eve_infinite_scroll_render',
 			'footer'    => 'page',
 		)
 	);
@@ -33,7 +33,7 @@ function eveal_jetpack_setup() {
 		'jetpack-content-options',
 		array(
 			'post-details' => array(
-				'stylesheet' => 'eveal-style',
+				'stylesheet' => 'eve-style',
 				'date'       => '.posted-on',
 				'categories' => '.cat-links',
 				'tags'       => '.tags-links',
@@ -48,12 +48,12 @@ function eveal_jetpack_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'eveal_jetpack_setup' );
+add_action( 'after_setup_theme', 'eve_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function eveal_infinite_scroll_render() {
+function eve_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :
