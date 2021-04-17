@@ -1,0 +1,299 @@
+{
+  "blocks": {
+    "block": [
+      {
+        "name": "SQ_Core_Blocklogin",
+        "description": "Connection Block",
+        "actions": {
+          "action": [
+            "sq_login",
+            "sq_register"
+          ]
+        },
+        "active": "1",
+        "admin": "1"
+      },
+      {
+        "name": "SQ_Core_BlockConnect",
+        "description": "Connection Block to API",
+        "actions": {
+          "action": [
+            "sq_cloud_connect",
+            "sq_cloud_disconnect"
+          ]
+        },
+        "active": "1",
+        "admin": "1"
+      },
+      {
+        "name": "SQ_Controllers_Account",
+        "description": "Account Class",
+        "actions": {
+          "action": [
+            "sq_ajax_account_getaccount"
+          ]
+        },
+        "active": "1",
+        "admin": "1"
+      },
+      {
+        "name": "SQ_Controllers_FocusPages",
+        "description": "Focus Pages Controller",
+        "actions": {
+          "action": [
+            "sq_focuspages_getpage",
+            "sq_focuspages_addnew",
+            "sq_focuspages_update",
+            "sq_focuspages_delete",
+            "sq_focuspages_inspecturl"
+          ]
+        },
+        "active": "1",
+        "admin": "1"
+      },
+      {
+        "name": "SQ_Controllers_PostsList",
+        "description": "Posts List Page",
+        "actions": {
+          "action": [
+            "inline-save",
+            "sq_ajax_postslist"
+          ]
+        },
+        "active": "1",
+        "admin": "1"
+      },
+      {
+        "name": "SQ_Controllers_Post",
+        "description": "Post Page",
+        "actions": {
+          "action": [
+            "sq_create_demo",
+            "sq_ajax_save_ogimage",
+            "sq_ajax_get_post",
+            "sq_ajax_save_post",
+            "sq_ajax_type_click",
+            "sq_ajax_search_blog"
+          ]
+        },
+        "active": "1",
+        "admin": "1"
+      },
+      {
+        "name": "SQ_Controllers_Snippet",
+        "description": "Snippet Page",
+        "actions": {
+          "action": [
+            "sq_saveseo",
+            "sq_getsnippet",
+            "sq_previewsnippet"
+          ]
+        },
+        "active": "1",
+        "admin": "1"
+      },
+      {
+        "name": "SQ_Controllers_Patterns",
+        "description": "Patterns Class",
+        "actions": {
+          "action": [
+            "sq_getpatterns"
+          ]
+        },
+        "active": "1",
+        "admin": "0"
+      },
+      {
+        "name": "SQ_Controllers_BulkSeo",
+        "actions": {
+          "action": [
+            "sq_ajax_assistant_bulkseo"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      },
+      {
+        "name": "SQ_Controllers_SeoSettings",
+        "actions": {
+          "action": [
+            "sq_seosettings_automation",
+            "sq_seosettings_bulkseo",
+            "sq_seosettings_jsonld",
+            "sq_seosettings_metas",
+            "sq_seosettings_links",
+            "sq_seosettings_social",
+            "sq_seosettings_tracking",
+            "sq_seosettings_webmaster",
+            "sq_seosettings_sitemap",
+            "sq_seosettings_robots",
+            "sq_seosettings_favicon",
+            "sq_seosettings_backupsettings",
+            "sq_seosettings_backupseo",
+            "sq_seosettings_restoresettings",
+            "sq_seosettings_restoreseo",
+            "sq_seosettings_importsettings",
+            "sq_seosettings_importseo",
+            "sq_seosettings_importall",
+            "sq_seosettings_ga_revoke",
+            "sq_seosettings_gsc_revoke",
+            "sq_seosettings_gsc_check",
+            "sq_seosettings_ga_check",
+            "sq_reinstall",
+            "sq_rollback",
+            "sq_alerts_close",
+            "sq_ajax_seosettings_save",
+            "sq_ajax_automation_addpostype",
+            "sq_ajax_automation_deletepostype",
+            "sq_ajax_sla_sticky",
+            "sq_ajax_gsc_code",
+            "sq_ajax_ga_code",
+            "sq_ajax_connection_check",
+            "sq_seosettings_advanced"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      },
+      {
+        "name": "SQ_Controllers_Research",
+        "actions": {
+          "action": [
+            "sq_briefcase_addlabel",
+            "sq_briefcase_editlabel",
+            "sq_briefcase_keywordlabel",
+            "sq_briefcase_article",
+            "sq_briefcase_doresearch",
+            "sq_briefcase_addkeyword",
+            "sq_briefcase_deletekeyword",
+            "sq_briefcase_deletelabel",
+            "sq_briefcase_deletefound",
+            "sq_briefcase_savemain",
+            "sq_briefcase_backup",
+            "sq_briefcase_restore",
+            "sq_ajax_briefcase_doserp",
+            "sq_ajax_research_others",
+            "sq_ajax_research_process",
+            "sq_ajax_research_history",
+            "sq_ajax_briefcase_bulk_delete",
+            "sq_ajax_briefcase_bulk_label",
+            "sq_ajax_briefcase_bulk_doserp",
+            "sq_ajax_labels_bulk_delete"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      },
+      {
+        "name": "SQ_Controllers_Audits",
+        "actions": {
+          "action": [
+            "sq_audits_settings",
+            "sq_auditpages_getaudit",
+            "sq_audits_getpage",
+            "sq_audits_addnew",
+            "sq_audits_page_update",
+            "sq_audits_update",
+            "sq_audits_delete"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      },
+      {
+        "name": "SQ_Controllers_Ranking",
+        "actions": {
+          "action": [
+            "sq_ranking_settings",
+            "sq_serp_refresh_post",
+            "sq_serp_delete_keyword",
+            "sq_ajax_rank_bulk_delete",
+            "sq_ajax_rank_bulk_refresh"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      },
+      {
+        "name": "SQ_Controllers_Assistant",
+        "actions": {
+          "action": [
+            "sq_settings_assistant",
+            "sq_ajax_assistant"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      },
+      {
+        "name": "SQ_Controllers_CheckSeo",
+        "actions": {
+          "action": [
+            "sq_checkseo",
+            "sq_fixsettings",
+            "sq_donetask",
+            "sq_resetignored",
+            "sq_moretasks",
+            "sq_ajax_checkseo",
+            "sq_ajax_getgoals"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      },
+      {
+        "name": "SQ_Controllers_Onboarding",
+        "actions": {
+          "action": [
+            "sq_onboarding_commitment",
+            "sq_onboading_checksite",
+            "sq_onboarding_settings"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      },
+      {
+        "name": "SQ_Core_BlockJorney",
+        "actions": {
+          "action": [
+            "sq_journey_close"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      },
+      {
+        "name": "SQ_Core_BlockSupport",
+        "actions": {
+          "action": [
+            "sq_feedback",
+            "sq_uninstall_feedback"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      },
+      {
+        "name": "SQ_Core_BlockSearch",
+        "actions": {
+          "action": [
+            "sq_ajax_search"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      },
+      {
+        "name": "SQ_Controllers_Dashboard",
+        "actions": {
+          "action": [
+            "sq_ajaxcheckseo"
+          ]
+        },
+        "admin": "1",
+        "active": "1"
+      }
+    ]
+  }
+}

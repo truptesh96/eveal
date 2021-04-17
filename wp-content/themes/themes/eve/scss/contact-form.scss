@@ -1,0 +1,16 @@
+.wpcf7{
+	br{ display: none; }
+	span{ display: block; margin: 0 0 18px; }
+
+	.ajax-loader { display: none; }
+	.wpcf7-not-valid-tip{ font-size: 12px; font-weight: 600; }
+	 form {
+		.wpcf7-response-output{ margin: 22px 0 0; padding: 14px 18px; }
+		.wpcf7-checkbox{ 
+			label{ display: block; display: flex; align-items: center;
+				input[type="checkbox"]{ width: 16px; height: 16px; }
+				span{ margin: 0 0 0 10px; width: auto; }
+			}
+		}
+	}
+}

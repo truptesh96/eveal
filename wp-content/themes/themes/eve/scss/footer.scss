@@ -1,0 +1,26 @@
+.site-footer{
+
+	&.sticky{ width: 100%; position: fixed; left: 0; bottom: 0; }
+	.copyright-txt{ text-align: center; color: #f4f4f4; }
+
+	.footer-top{ padding: 45px 0; position: relative; background: #0b0a65;
+		.flink{ margin: 12px 0 0; }
+		label, span, a, address{ color: #f4f4f4; }
+		label{ width: 70px; }
+	}
+	.footer-logo{ margin: 0 0 16px; filter: invert(0.75); }
+	.footer-bottom{ padding: 16px 0; background: #010050; }
+
+}
+
+.socials{ display: flex; margin: 32px 0 -12px;
+	a:not(:last-child){ margin: 0 12px 12px 0; }
+	svg{ fill: #0FA896; transition: 0.5s all ease; }
+	a{ font-size: 0;
+		&:hover{
+			svg{ filter: drop-shadow(0 0px 10px #0FA896); fill: #fff; }
+		}
+	}
+
+
+}
