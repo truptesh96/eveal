@@ -27,7 +27,7 @@
 .about-home{ background: #e8f9ff;
 
 	figure{ margin: 24px 0; 
-		figcaption{ margin: 16px 0; text-transform: uppercase; letter-spacing: 3px; font-size: 22px; color: #4747f3; }
+		figcaption{ margin: 16px 0; text-transform: uppercase; letter-spacing: 3px; font-size: 22px; color: #0b0a65; }
 		p{ margin: 16px 0; }
 	}
 
@@ -36,6 +36,32 @@
 	}
 }
 
+.services{ background: #FFF9F3; position: relative;
+	&:before{ content:''; position: absolute; top: -170px; left: 0px; max-width: 320px; height: 350px; display: block;
+	width: 100%; background: url('imgs/circle-and-dots.svg'); background-size: cover; }
+
+	.service:not(:last-child){ margin: 0 0 30px; border-bottom: 2px solid #101010; }
+	.service{
+		.title{ margin: 0 0 16px; }
+		.content{ padding: 22px 0; }
+		img{ width: 100%; }
+	}
+
+}
+
+.testimonials { position: relative; background: url('imgs/3392072.jpg') ;
+	&:before{ content:''; display: block; height: 85%; left: 0; width: 124px; background: url('imgs/dot-grid.png') repeat-y;
+	position: absolute; top: 50%; transform: translateY(-50%); }
+	.testimonial{ 
+		h3{ color: #4f804f; max-width: 575px; }
+		p{ font-weight: bold; margin: 16px 0 0; }
+	}
+
+	.right{
+		p{ max-width: 525px; }
+	}
+
+}
 
 @media (min-width: 589px){
 
@@ -55,19 +81,34 @@
 		box-shadow: 0 8px 0px #ff005f, 8px 8px 0px #ff005f; background: #ffecf8; margin: -75px auto 54px; }
 	}
 
+	.services{ background: #FFF9F3;
+		.service:not(:last-child){ margin: 0; border-bottom: 0; }
+		.service:not(:nth-child(3n-1)){ margin-top: 55px; margin-bottom: 55px; }
+		.service{ padding: 0 15px; }
+	}
+
+	.testimonials{
+		.testimonial p{ margin: 22px 0 0; }
+		.left{ padding-right: 40px;	}
+		.right p{ margin: 32px 0 12px 22px; }
+	}
+
 }
 
 
 @media (min-width: 1024px){ 
 
-	.about-home{ background: url('imgs/plants.png') no-repeat left bottom #e8f9ff; background-size: 230px;
-
+	.about-home{ 
 		.vision { padding-right: 24px; }
 	 	.mission { padding-left: 24px; }
 	}
 
 	.hero-banner { 
 		.content{ margin-top: -145px; }
+	}
+
+	.testimonials {
+		.testimonial p{ margin: 32px 0 0; }
 	}
 }
 
@@ -80,11 +121,21 @@
 		.content{ margin-top: -175px; padding: 42px 54px; max-width: 1100px; }
 	}
 
+	.services{ background: #FFF9F3;
+		picture{ background: linear-gradient(45deg, blue, red); }
+		.service:not(:nth-child(3n-1)){ margin-top: 90px; margin-bottom: 90px; }
+		.service{
+			&:hover{
+				img{ opacity: 0.75; transition: 0.5s ease all; }
+				h3{ color: #0b0a65; transform: translateY(-10px); transition: 0.5s ease all;}
+			}
+		}
+	}
+
 }
 
 
 @media (min-width: 1440px){ 
 
-	.about-home{ background-size: 275px; }
 
 }

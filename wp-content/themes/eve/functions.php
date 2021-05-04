@@ -148,11 +148,20 @@ function eve_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+
+	/* Optimizing Template Resources */
+    if(basename(get_page_template()) == 'education-template.php'){
+      wp_enqueue_style('education-template', get_template_directory_uri().'/css/blocks-styles/education.css' );
+    }
+    /* Landing Page Temmplate Resources Ends */
+
+
 }
 
 
 add_action( 'wp_enqueue_scripts', 'eve_scripts' );
-function remove_wp_block_library_css(){ wp_dequeue_style( 'wp-block-library' ); }
+	function remove_wp_block_library_css(){ wp_dequeue_style( 'wp-block-library' ); }
 add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css' );
 
 /**
@@ -205,24 +214,12 @@ if( function_exists('acf_add_options_page') ) {
 		'redirect'		=> false
 	));
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Error Page Settings',
-		'menu_title'	=> 'Error Page',
+		'page_title' 	=> 'General Page Settings',
+		'menu_title'	=> 'General Page',
 		'parent_slug'	=> 'theme-general-settings',
 		'redirect'		=> false
 	));
 }
-
-function my_custom_mime_types( $mimes ) {
- 
-// New allowed mime types.
-$mimes['svg'] = 'image/svg+xml';
-$mimes['svgz'] = 'image/svg+xml';
-$mimes['doc'] = 'application/msword';
-// Optional. Remove a mime type.
-unset( $mimes['exe'] );
-return $mimes;
-}
-add_filter( 'upload_mimes', 'my_custom_mime_types' );
 
 /** Zip & SVG File Upload **/
 add_filter('upload_mimes', 'custom_upload_mimes');

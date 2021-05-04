@@ -36,6 +36,30 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
   transition: 0.7s all ease;
 }
 
+.quote:before {
+  content: "";
+  height: 0px;
+  width: 74px;
+  height: 54px;
+  background: url("imgs/review-quote.png") no-repeat;
+  background-size: cover;
+  display: block;
+}
+.quote.quote-center:before {
+  margin-inline: auto;
+}
+
+#sloader {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 99999;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .toBottom {
   transform: translateY(-32px);
 }
@@ -77,7 +101,6 @@ body {
 li, footer, header, input, form, textarea, figure, div, section {
   box-sizing: border-box;
   max-width: 100%;
-  width: 100%;
 }
 
 img {
@@ -98,6 +121,7 @@ img.rounded {
 picture, aside, main, figure, ul, ol, dl, p, h1, h2, h3, h4, h5, h6, section, form,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin: 0;
+  padding: 0;
 }
 
 li {
@@ -168,12 +192,69 @@ textarea {
   outline: none;
 }
 
+.arrow-link {
+  position: relative;
+  color: #4747f3;
+}
+.arrow-link:before {
+  content: "";
+  background: #4747f3;
+  width: 25px;
+  height: 2px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  border-radius: 2px;
+  border-radius: 2px;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+}
+.arrow-link:after {
+  content: "";
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #4747f3;
+  border-right: 2px solid #4747f3;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  border-radius: 1px;
+  vertical-align: middle;
+  margin: 0 0 0 25px;
+}
+.arrow-link:hover {
+  color: #0FA896;
+  transition: 0.7s;
+}
+.arrow-link:hover:before, .arrow-link:hover:after {
+  transition: 0.7s all ease;
+}
+.arrow-link:hover:before {
+  width: 28px;
+  background: #0FA896;
+}
+.arrow-link:hover:after {
+  margin: 0 0 0 32px;
+  border-color: #0FA896;
+}
+
+.button-wrap {
+  margin: 0 0 -32px;
+}
 .button-wrap .button {
   margin: 0 16px 32px;
 }
 
+.hoverCursor:hover {
+  cursor: pointer;
+}
+
 /*------ Reset CSS Ends ------*/
-/*------ fonts And ----------*/
+/*------ fonts ----------*/
 .head64 {
   font-size: 38px;
 }
@@ -206,8 +287,13 @@ h6, .h6 {
   font-size: 16px;
 }
 
+address, caption, label,
 span, a, figcaption, textarea, input, li, p {
   font-size: 16px;
+}
+
+.upCase {
+  text-transform: uppercase;
 }
 
 /*--------- Displays ------------*/
@@ -238,20 +324,24 @@ span, a, figcaption, textarea, input, li, p {
   align-items: center;
 }
 
+.textCenter {
+  text-align: center;
+}
+
 .paddTb40 {
-  padding: 40px 0;
+  padding: 22px 0;
 }
 
 .paddTb64 {
-  padding: 64px 0;
+  padding: 32px 0;
 }
 
 .paddTb72 {
-  padding: 72px 0;
+  padding: 42px 0;
 }
 
 .paddTb100 {
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 /*--------- Displays Ends ------------*/
@@ -294,6 +384,10 @@ body form select, body .form select {
 /*------------ Swipper Arrows ---------------*/
 .sslider {
   position: relative;
+  overflow: hidden;
+}
+.sslider:not(.swiper-container-initialized) .swiper-slide:not(:first-child) {
+  display: none;
 }
 
 .no-navigation .swiper-nav, .no-navigation .swiper-arrow {
@@ -344,6 +438,53 @@ body form select, body .form select {
 
 .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet:not(:last-child) {
   margin: 0 6px 0 0;
+}
+
+.hoverCard {
+  position: relative;
+  overflow: hidden;
+}
+.hoverCard:before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  background: linear-gradient(45deg, #f70000b3, #3816c159);
+  -webkit-transition: 0.8s 0.1s cubic-bezier(0.8, 0, 0.4, 1);
+  transition: 0.8s 0.1s cubic-bezier(0.8, 0, 0.4, 1);
+}
+.hoverCard img, .hoverCard figure, .hoverCard picture {
+  width: 100%;
+  transition: 0.5s all ease;
+}
+.hoverCard .title {
+  line-height: 1.2;
+}
+.hoverCard .hoverContent {
+  position: absolute;
+  z-index: 3;
+  visibility: hidden;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  padding: 12px 14px;
+  -webkit-transition: 0.8s 0.1s cubic-bezier(0.8, 0, 0.4, 1);
+  transition: 0.8s 0.1s cubic-bezier(0.8, 0, 0.4, 1);
+}
+.hoverCard:hover .hoverContent {
+  visibility: visible;
+  bottom: 0;
+}
+.hoverCard:hover:before {
+  opacity: 1;
+}
+.hoverCard:hover figure, .hoverCard:hover picture {
+  transform: translateY(-40px);
 }
 
 /*---------- Grid System -------------*/
@@ -424,6 +565,26 @@ body form select, body .form select {
     max-width: 94vw;
     margin-inline: auto;
   }
+
+  .xxtabCol2 {
+    width: 50%;
+  }
+
+  .xxtabCol3 {
+    width: 33.3333%;
+  }
+
+  .xxtabCol4 {
+    width: 25%;
+  }
+
+  .xxtabWid40 {
+    width: 40%;
+  }
+
+  .xxtabWid60 {
+    width: 60%;
+  }
 }
 @media (min-width: 1200px) {
   .head64 {
@@ -458,11 +619,28 @@ body form select, body .form select {
     font-size: 28px;
   }
 
-  span, a, figcaption, textarea, input, li, p {
+  address, caption, label,
+span, a, figcaption, textarea, input, li, p {
     font-size: 22px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1366px) {
+  .paddTb40 {
+    padding: 40px 0;
+  }
+
+  .paddTb64 {
+    padding: 64px 0;
+  }
+
+  .paddTb72 {
+    padding: 72px 0;
+  }
+
+  .paddTb100 {
+    padding: 100px 0;
+  }
+
   .wrapper {
     max-width: 84vw;
   }
@@ -479,16 +657,17 @@ body form select, body .form select {
 }
 .hamIcon span {
   display: block;
-  height: 3px;
-  background: #666;
-  margin: 4px 0;
+  height: 4px;
+  background: #010050;
+  margin: 6px 0;
+  border-radius: 80px;
 }
 .hamIcon:after, .hamIcon:before {
   content: "";
   display: block;
-  height: 3px;
+  height: 4px;
   border-radius: 8px;
-  background: #666;
+  background: #010050;
   opacity: 1;
   transition: 0.75s all ease;
   position: relative;
@@ -504,19 +683,19 @@ body form select, body .form select {
   box-shadow: none;
 }
 .hamIcon:hover:after, .hamIcon:hover:before, .hamIcon:active:after, .hamIcon:active:before, .hamIcon:focus:after, .hamIcon:focus:before {
-  height: 3px;
+  height: 4px;
 }
 .hamIcon.open span {
   opacity: 0;
 }
 .hamIcon.open:after, .hamIcon.open:before {
-  background: #e4ab0d;
+  background: #010050;
 }
 .hamIcon.open:after {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(7px, -7px);
 }
 .hamIcon.open:before {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(7px, 7px);
 }
 
 /*--------- Lock Header UP Down --------*/
@@ -537,6 +716,68 @@ body form select, body .form select {
 }
 
 /*--------- Lock Header UP Down Ends --------*/
+/*-------- Menu Submenu Leve3 ---------*/
+.site-header li.menu-item-has-children {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.site-header li.menu-item-has-children > a {
+  width: calc(100% - 40px);
+}
+
+.site-header .sub-menu {
+  display: none;
+  width: 100%;
+  order: 3;
+  padding: 20px 0;
+  background: #010050;
+}
+.site-header .sub-menu a {
+  font-size: 18px;
+  text-transform: capitalize;
+  padding: 6px 16px;
+  color: #fff;
+  font-weight: normal;
+}
+.site-header .sub-menu li {
+  margin-top: 0;
+}
+
+.submenuToggle {
+  background: #010050;
+  width: 40px;
+  margin: 0;
+  order: 2;
+  position: relative;
+}
+.submenuToggle.open:before, .submenuToggle.open:after {
+  background: #fff;
+}
+.submenuToggle.open:before {
+  opacity: 0;
+}
+.submenuToggle:before, .submenuToggle:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  transition: 0.7s all ease;
+}
+.submenuToggle:before {
+  width: 3px;
+  height: 18px;
+}
+.submenuToggle:after {
+  height: 3px;
+  width: 18px;
+}
+.submenuToggle:hover {
+  cursor: pointer;
+}
+
 /*---------- Mobile Menu --------------*/
 @keyframes menuAnim {
   0% {
@@ -561,6 +802,7 @@ body form select, body .form select {
   animation: 1s ease menuAnim;
   z-index: 999;
   max-width: 450px;
+  overflow: auto;
 }
 .menu-open .hamIcon {
   margin: 0 auto 24px;
@@ -569,10 +811,10 @@ body form select, body .form select {
 .menu-open .site-header .menu-site-menu-container {
   display: table;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 100px);
   overflow: auto;
 }
-.menu-open .site-header .menu-site-menu-container ul {
+.menu-open .site-header .menu-site-menu-container .menu {
   display: table-cell;
   vertical-align: middle;
 }
@@ -597,16 +839,33 @@ body form select, body .form select {
 .site-header a {
   font-size: 24px;
   line-height: 1.5;
-  margin: 0 0 12px;
-  font-family: "Playfair Display", serif;
   display: block;
   text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 2px;
+  color: #6b6b6b;
+  box-sizing: border-box;
+}
+.site-header li {
+  margin-top: 24px;
 }
 
-.site-footer {
-  padding: 16px 0;
+@media (min-width: 1200px) {
+  .hamIcon:after, .hamIcon:before, .hamIcon span {
+    height: 5px;
+  }
+  .hamIcon:hover, .hamIcon:active, .hamIcon:focus {
+    border: none;
+    outline: none;
+    background: none;
+    box-shadow: none;
+  }
+  .hamIcon:hover:after, .hamIcon:hover:before, .hamIcon:active:after, .hamIcon:active:before, .hamIcon:focus:after, .hamIcon:focus:before {
+    height: 5px;
+  }
+  .hamIcon.open:after {
+    transform: rotate(-45deg) translate(8px, -8px);
+  }
 }
 .site-footer.sticky {
   width: 100%;
@@ -616,6 +875,49 @@ body form select, body .form select {
 }
 .site-footer .copyright-txt {
   text-align: center;
+  color: #f4f4f4;
+}
+.site-footer .footer-top {
+  padding: 45px 0;
+  position: relative;
+  background: url(imgs/pattern-blue.svg) #0b0a65;
+  background-position: center;
+  background-size: cover;
+}
+.site-footer .footer-top .flink {
+  margin: 12px 0 0;
+}
+.site-footer .footer-top label, .site-footer .footer-top span, .site-footer .footer-top a, .site-footer .footer-top address {
+  color: #f4f4f4;
+}
+.site-footer .footer-top label {
+  width: 70px;
+}
+.site-footer .footer-logo {
+  margin: 0 0 16px;
+}
+.site-footer .footer-bottom {
+  padding: 16px 0;
+  background: #2b2b2b;
+}
+
+.socials {
+  display: flex;
+  margin: 32px 0 -12px;
+}
+.socials a:not(:last-child) {
+  margin: 0 12px 12px 0;
+}
+.socials svg {
+  fill: #0FA896;
+  transition: 0.5s all ease;
+}
+.socials a {
+  font-size: 0;
+}
+.socials a:hover svg {
+  filter: drop-shadow(0 0px 10px #0FA896);
+  fill: #fff;
 }
 
 .hero-banner picture {
@@ -656,7 +958,7 @@ body form select, body .form select {
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 22px;
-  color: #4747f3;
+  color: #0b0a65;
 }
 .about-home figure p {
   margin: 16px 0;
@@ -664,6 +966,63 @@ body form select, body .form select {
 .about-home .left p {
   margin: 16px 0 24px;
   max-width: 350px;
+}
+
+.services {
+  background: #FFF9F3;
+  position: relative;
+}
+.services:before {
+  content: "";
+  position: absolute;
+  top: -170px;
+  left: 0px;
+  max-width: 320px;
+  height: 350px;
+  display: block;
+  width: 100%;
+  background: url("imgs/circle-and-dots.svg");
+  background-size: cover;
+}
+.services .service:not(:last-child) {
+  margin: 0 0 30px;
+  border-bottom: 2px solid #101010;
+}
+.services .service .title {
+  margin: 0 0 16px;
+}
+.services .service .content {
+  padding: 22px 0;
+}
+.services .service img {
+  width: 100%;
+}
+
+.testimonials {
+  position: relative;
+  background: url("imgs/3392072.jpg");
+}
+.testimonials:before {
+  content: "";
+  display: block;
+  height: 85%;
+  left: 0;
+  width: 124px;
+  background: url("imgs/dot-grid.png") repeat-y;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.testimonials .testimonial h3 {
+  color: #4f804f;
+  max-width: 575px;
+}
+.testimonials .testimonial p {
+  font-weight: bold;
+  margin: 16px 0 0;
+}
+.testimonials .right p {
+  max-width: 525px;
 }
 
 @media (min-width: 589px) {
@@ -692,12 +1051,33 @@ body form select, body .form select {
     background: #ffecf8;
     margin: -75px auto 54px;
   }
+
+  .services {
+    background: #FFF9F3;
+  }
+  .services .service:not(:last-child) {
+    margin: 0;
+    border-bottom: 0;
+  }
+  .services .service:not(:nth-child(3n-1)) {
+    margin-top: 55px;
+    margin-bottom: 55px;
+  }
+  .services .service {
+    padding: 0 15px;
+  }
+
+  .testimonials .testimonial p {
+    margin: 22px 0 0;
+  }
+  .testimonials .left {
+    padding-right: 40px;
+  }
+  .testimonials .right p {
+    margin: 32px 0 12px 22px;
+  }
 }
 @media (min-width: 1024px) {
-  .about-home {
-    background: url("imgs/plants.png") no-repeat left bottom #e8f9ff;
-    background-size: 230px;
-  }
   .about-home .vision {
     padding-right: 24px;
   }
@@ -707,6 +1087,10 @@ body form select, body .form select {
 
   .hero-banner .content {
     margin-top: -145px;
+  }
+
+  .testimonials .testimonial p {
+    margin: 32px 0 0;
   }
 }
 @media (min-width: 1200px) {
@@ -720,10 +1104,25 @@ body form select, body .form select {
     padding: 42px 54px;
     max-width: 1100px;
   }
-}
-@media (min-width: 1440px) {
-  .about-home {
-    background-size: 275px;
+
+  .services {
+    background: #FFF9F3;
+  }
+  .services picture {
+    background: linear-gradient(45deg, blue, red);
+  }
+  .services .service:not(:nth-child(3n-1)) {
+    margin-top: 90px;
+    margin-bottom: 90px;
+  }
+  .services .service:hover img {
+    opacity: 0.75;
+    transition: 0.5s ease all;
+  }
+  .services .service:hover h3 {
+    color: #0b0a65;
+    transform: translateY(-10px);
+    transition: 0.5s ease all;
   }
 }
 .worldMap {

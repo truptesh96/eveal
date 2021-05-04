@@ -25,9 +25,18 @@
 	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 	<?php wp_head(); ?>
+
 </head>
 
 <body <?php body_class(); ?>>
+
+<div id="sloader"><span>Loading...</span></div>
+<script>
+document.onreadystatechange = () => { 
+  (document.readyState === 'complete') ? document.getElementById("sloader").outerHTML = "" : '' ;
+}
+</script>
+
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 	<header class="site-header">
@@ -41,4 +50,10 @@
 				<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu', )); ?>
 			</nav><!-- #site-navigation -->
 		</div>
+
+		<?php if(is_tax( 'work' ) ) :  ?><h1>Taxonomy</h1><?php endif; ?>
+
 	</header>
+
+
+	

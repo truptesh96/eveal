@@ -1,0 +1,600 @@
+/*--------- Landing Page CSS ----------*/
+
+.site-footer, .site-header{ display: none !important; }
+
+/*----------- Video Popup -------------*/
+@keyframes fade-in{ 0% { opacity: 0; } 100% { opacity: 1; } }
+.modal.video-modal.active { display: flex; align-items: center; justify-content: center; }
+.modal.active { display: block; animation: fade-in 1s 0s 1 forwards; }
+.modal { position: fixed; top: 0; left: 0; z-index: 9001; height: 100%; width: 100%; overflow: auto; display: none; opacity: 0; 
+background-color: rgba(0, 0, 0, 0.7); }
+.modal > div { position: relative; z-index: 2; width: 100%; max-width: 750px; margin: 60px auto; padding: 30px; background-color: #fff; }
+.modal.video-modal > div { background-color: transparent; }
+.modal .modal-close{ font-size: 24px; text-align: right; cursor: pointer; color: #fff; }
+.modal .modal-close { font-size: 24px;
+text-align: right; cursor: pointer;   color: #fff; }
+.embed-container { position: relative; padding: 56.25% 0 0 0; height: 0; overflow: hidden; max-width: 100%; } 
+.embed-container iframe, .embed-container object, .embed-container embed, .embed-container img, .embed-container video { position: absolute; top: 0; 
+	left: 0; width: 100%; height: 100%; }
+/*----------- Video Popup Ends -------------*/
+
+/*----------- Select Box CSS --------------*/
+.page-template-landing-page .landing-content .formWrapper .select2.select2-container .select2-selection{ padding: 14px 16px !important; height: 50px;
+ line-height: 1 !important; font-size: 16px !important;  }
+body.page-template-landing-page .select2-search--dropdown{ padding: 0; }
+body.page-template-landing-page .select2.select2-container .select2-selection .select2-selection__arrow:before{ font-size: 0 !important; width: 0 !important;
+height: 0; border-style: solid; border-width: 10px 10px 0 10px;
+border-color: #939393 transparent transparent transparent; margin: 18px 0 0; }
+body.page-template-landing-page .select2-container.select2-container--open .select2-dropdown{ border: none !important; }
+body.page-template-landing-page .select2.select2-container .select2-selection, body .select2-dropdown{ border-radius: 10px !important; overflow: hidden; }
+body.page-template-landing-page .select2-search--dropdown .select2-search__field{ display: none; }
+body.page-template-landing-page .landing-content .formWrapper .select2-container--default .select2-selection--single .select2-selection__rendered{ line-height: 1; }
+body.page-template-landing-page .select2-container.select2-container--open .select2-dropdown .select2-results li[aria-selected="true"],
+body.page-template-landing-page .select2-results li.select2-results__option.select2-results__option--highlighted{ background: #a8ad00 !important; transition: 0.25s all ease; }
+body.page-template-landing-page .select2-container.select2-container--open .select2-dropdown .select2-results li{ font-size: 16px;  }
+body.page-template-landing-page .select2-container.select2-container--open .select2-dropdown .select2-results li[aria-selected="true"],
+body.page-template-landing-page .select2-container.select2-container--open .select2-dropdown .select2-results li.select2-results__option--highlighted{ color: #fff !important; }
+body.page-template-landing-page  .select2-container.select2-container--open .select2-dropdown .select2-results li{ padding: 10px 14px !important; margin: 0 !important; }
+body.page-template-landing-page .select2-dropdown.select2-dropdown--below{ border-top-left-radius:0 !important; border-top-right-radius:0 !important; padding-top: 10px; margin-top: -8px; z-index: -99; }
+body.page-template-landing-page .select2-dropdown.select2-dropdown--above{ border-bottom-left-radius:0 !important; border-bottom-right-radius:0 !important; padding-bottom: 10px; z-index: -99; transform: translateY(8px); }
+
+@media screen and (max-width: 1600px){
+
+body.page-template-landing-page .landing-content .formWrapper .select2.select2-container .select2-selection{ font-size: 15px !important; padding: 10px 12px !important; height: 40px !important; }
+body.page-template-landing-page .select2-container.select2-container--open .select2-dropdown .select2-results li{ font-size: 15px; }
+body.page-template-landing-page .select2-container.select2-container--open .select2-dropdown .select2-results li { padding: 8px 16px !important; }
+body.page-template-landing-page .select2.select2-container .select2-selection, body .select2-dropdown{ border-radius: 8px !important; }
+body.page-template-landing-page .select2.select2-container .select2-selection .select2-selection__arrow:before{ margin: 15px 0 0; }
+	
+}
+
+@media screen and (max-width: 1199px){
+
+body.page-template-landing-page .landing-content .formWrapper .select2.select2-container .select2-selection{ font-size: 14px !important;
+padding: 8px 12px !important; height: 34px !important; }
+body.page-template-landing-page .select2-container.select2-container--open .select2-dropdown .select2-results li{ font-size: 14px; }
+body.page-template-landing-page .select2-container.select2-container--open .select2-dropdown .select2-results li { padding: 4px 12px !important; }
+body.page-template-landing-page .select2.select2-container .select2-selection, body .select2-dropdown{ border-radius: 5px !important; }	
+body.page-template-landing-page .select2.select2-container .select2-selection .select2-selection__arrow:before{ margin: 13px 0 0; border-width: 7px 7px 0 7px; }
+
+}
+
+/*----------- Select Box CSS Ends --------------*/
+
+/*---------- Typo ----------*/
+.landing-content h1, .landing-content .h1, .landing-content .fonts114{ font-size: 114px; line-height: 1.28; }
+.landing-content .fonts34{ font-size: 33px; line-height: 1.05; }
+.landing-content .fonts70{ font-size: 70px; line-height:1.25; }
+.landing-content .fonts43, .landing-content .two-columns h3{ font-size: 43px; line-height: 1.25; }
+.landing-content h4, .landing-content .h4, .landing-content .fonts23, .landing-content .fonts23 p, .landing-foot .fonts23,
+.landing-content .fonts23 li, .landing-content .fonts23 a, .landing-content .fonts23 span{ font-size: 23px;  font-size: 22px;
+line-height: 1.52; }
+.landing-content h4, .landing-content .h4{ color: #005cb9; }
+.landing-content .gform_wrapper{ margin: 0; }
+.button .video-icon:before{ content: ''; display: inline-block; height: 30px; width: 30px; vertical-align: middle; 
+margin: -3px 12px 0 0; background-image: url('../../imgs/video-icon.png'); background-repeat: no-repeat; background-position: center; 
+background-size: cover; }
+.landing-content .gform_wrapper .gform_footer input.button, .landing-content .gform_wrapper .gform_footer input[type=submit], 
+.landing-content .landing-content .gform_wrapper .gform_page_footer input.button, 
+.page-template-landing-page .button{ display: inline-block; padding: 14px 26px; background: #a8ad00; color: #fff; vertical-align: middle;
+border-radius: 16px; font-size: 18px; text-transform: uppercase;  border: none; outline: none; 
+font-weight: 800; }
+.page-template-landing-page .button:hover{ background: #fff; color: #1a0eba; transition: 0.7s all ease; }
+.landing-content .button-wrap a + div, .landing-content .button-wrap a + a{	margin-left: 40px; }
+.landing-content .call-link {  vertical-align: middle; display: inline-block; border-bottom: 2px solid; }
+.landing-content .call-link.white-txt a{ color: #fff; vertical-align: baseline; }
+.landing-content .call-link span { margin-right: 8px; }
+.landing-wrapper{ max-width: 1370px; width: 100%; margin: 0 auto; }
+.page-template-landing-page .left-pull120{ transform: translateX(-120px); }
+.sslider:not(.slick-slider) .test-slide{ display: none; }
+.sslider:not(.slick-slider) .test-slide:first-child{ display: block; }
+body.page-template-landing-page{ padding: 0; }
+
+.landing-content .h1, .landing-content .h2, .landing-content .h3, .landing-content .h4, .landing-content .h5, .landing-content .h6,
+.landing-content h1, .landing-content h2, .landing-content h3, .landing-content h4, .landing-content h5, .landing-content h6 { font-weight: normal; 
+ margin-top: 0; }
+.landing-content .formWrapper a{ text-decoration: underline; }
+.landing-content .gform_wrapper.gf_browser_chrome .gfield_checkbox li input, 
+.landing-content .gform_wrapper.gf_browser_chrome .gfield_checkbox li input[type=checkbox], 
+.landing-content .gform_wrapper.gf_browser_chrome .gfield_radio li input[type=radio]{ margin: 0 14px 0 0; height: 18px; width: 18px; appearance: none;
+ -webkit-appearance: none; -moz-appearance: none; }
+.landing-content .gform_wrapper.gf_browser_chrome .gfield_checkbox li input[type=checkbox]:checked, 
+.landing-content .gform_wrapper.gf_browser_chrome .gfield_radio li input[type=radio]:checked,
+.landing-content .gform_wrapper.gf_browser_chrome .gfield_checkbox li input[type=checkbox]:focus, 
+.landing-content .gform_wrapper.gf_browser_chrome .gfield_radio li input[type=radio]:focus{ background: url('../images/tick.svg') no-repeat;
+outline: none; border: none; background-position: center; background-size: 15px auto; background-repeat: no-repeat; background-color: #fff; }
+.landing-content .gform_wrapper .gform_footer{ padding: 0; display: flex; justify-content: space-between; align-items: center; }
+.landing-content .formWrapper .below-form { padding: 30px 0 0; }
+.landing-content .formWrapper .below-form a{ font-size: 16px; }
+.landing-content ol, .landing-content ul{ padding: 0 0 0 20px; }
+.landing-content .two-columns .two-cols-row li:not(:last-child){ margin: 0 0 25px; }
+.landing-content .slick-arrow:hover{ background-color: #005cb9; cursor: pointer; }
+.landing-content .slick-arrow{ background-color: #a8ad00; background-image: url('../images/slick-arrow.png'); background-repeat: no-repeat; 
+background-position: left 13px center; width: 46px; height: 46px; border-radius: 50%; position: absolute; bottom: 155px; left: calc(50% + 70px);
+z-index: 9999; }
+.landing-content .slick-arrow.next{ transform: rotate(180deg); left: calc(50% + 140px); }
+.landing-content .white-txt{ color: #fff; }
+.landing-content .green-txt{ color: #a8ad00; }
+.page-template-landing-page .landing-hero-banner .button:hover{ color: #fff; background: #005cb9; }
+.landing-content .black-txt{ color: #171818; }
+.landing-content .two-columns h3,
+.landing-content .h2, .landing-content h2, .landing-content .blue-txt{ color: #005cb9; }
+.landing-content .dark-blue-txt{color: #091624; }
+.landing-content .wid50{ width: 50%; }
+.landing-head{ position: relative; z-index: 99; }
+.landing-head .head-logo{ position: absolute; background: #091624; padding: 30px; }
+.landing-foot{ text-align: center; background: #422252; padding: 60px 0 50px; }
+.landing-foot .footer-logo{ display: inline-block; margin: 0 0 40px;  }
+.landing-foot .footer-text{ color: #8d8d8d; }
+.landing-content .dflex{ display: flex; }
+.landing-content .dflex.swap{ flex-direction: row-reverse; }
+.landing-content .dflex.wrap{ flex-wrap: wrap; }
+.landing-content .dflex.wrap-reverse{ flex-wrap: wrap-reverse; }
+.landing-content .gform_wrapper li.gfield.gfield_error.gfield_contains_required div.ginput_container, .landing-content .gform_wrapper li.gfield.gfield_error.gfield_contains_required label.gfield_label{ margin: 0 !important; }
+.landing-content .gform_wrapper .field_description_below .gfield_description{ padding-top: 0 !important; }
+.landing-content .gform_wrapper .custom-links{ display: none !important; }
+.landing-content .landing-cta .call-link.white-txt a:hover{ color: #a8ad00;  }
+.landing-content .dark-blue-txt a:hover,
+.landing-content .call-link.white-txt a:hover, .landing-content .formWrapper .below-form a:hover, .landing-foot a.footer-text:hover{ color: #005cb9; }
+/*---------- Typo Ends ----------*/
+
+/*----------- Hero Banner -----------*/
+.landing-content .gform_wrapper .gform_footer input.button, .landing-content .gform_wrapper .gform_footer input[type=submit], 
+.landing-content .gform_wrapper .gform_page_footer input.button, .landing-content .gform_wrapper .gform_page_footer input[type=submit]{ width: 195px; margin: 0; }
+.landing-content .gform_wrapper .gform_footer{ margin: 48px 0 0; }
+body .landing-content .gform_wrapper ul li.gfield {	margin-top: 34px; }
+.page-template-landing-page .landing-content .gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+.landing-content .gform_wrapper textarea, .page-template-landing-page .landing-content .gform_wrapper select { padding: 14px 16px; font-size: 16px; 
+	border-radius: 10px; border: 0px ; outline: none; height: 50px;  }
+.landing-content .formWrapper .gform_wrapper ul.gform_fields li.gfield{ padding: 0; }
+.landing-content .formWrapper{ max-width: 570px; margin: 0 0 0 auto; background: rgba(255,255,255,0.75); padding: 50px 50px 35px; }
+.landing-content form input, .landing-content form select, .landing-content form textareaa{ background: #fff; }
+.page-template-landing-page label, .page-template-landing-page .gform_wrapper label.gfield_label, 
+.page-template-landing-page .gform_wrapper legend.gfield_label{ font-weight: normal !important;  }
+.landing-content .gform_wrapper ul.gfield_checkbox li label, .landing-content .gform_wrapper ul.gfield_radio li label, 
+.landing-content .gform_wrapper .top_label .gfield_label, .landing-content .gform_wrapper legend.gfield_label{ color: #091624; font-size: 18px;
+ }
+.landing-content .landing-hero-banner { background-size: cover; background-position: center bottom; min-height: 1080px; display: flex; 
+align-items: flex-end; }
+.landing-content .landing-hero-banner .left{ max-width: 785px; width: 100%; padding: 110px 0 60px; }
+.landing-content .landing-hero-banner .right{ max-width: calc(100% - 785px); width: 100%; padding-left: 15px; align-self: flex-end; }
+.landing-content .landing-hero-banner .description{ max-width: 470px; margin: 0 0 50px; }
+.landing-content .landing-hero-banner .description:before { content: ''; display: block; height: 4px; width: 75px; background: #a7ad00; 
+margin: 30px 0 40px; }
+/*----------- Hero Banner Ends -----------*/
+
+/*----------- Two Columns -----------*/
+.landing-content .two-columns .main-heading.fonts43 { max-width: 680px; }
+.landing-content .two-columns .two-cols-row { margin: 90px 0; }
+.landing-content .two-columns .main-heading { margin: 80px 0 0; }
+.landing-content .two-columns .main-heading:before { content: ''; display: block; height: 4px; width: 75px; background: #a7ad00; margin: 0 0 30px; }
+.landing-content .two-columns .two-cols-row .dflex{ align-items: center; }
+.landing-content .two-columns p + h3 { margin-top: 50px; }
+.landing-content .two-columns h3 + p,
+.landing-content .two-columns p + h4 { margin-top: 20px; }
+.landing-content .two-columns .two-cols-row p + p{ margin: 40px 0 0; }
+.landing-content .two-columns .wrap:not(.swap) figure,
+.landing-content .two-columns .swap .content{ padding: 0 70px 0 0; }
+.landing-content .two-columns .wrap:not(.swap) .content ,
+.landing-content .two-columns .swap figure{ padding: 0 0 0 70px; }
+.landing-content .two-columns .two-cols-row h4{  font-weight: 600; }
+.landing-content .two-columns .two-cols-row li{ list-style: disc; }
+
+/*----------- Two Columns Ends -----------*/
+
+
+/*-------------- Marketing CTA ----------------*/
+.landing-content .marketing-cta{ padding: 315px 0 265px; background-size: cover;  background-repeat: no-repeat; background-attachment: fixed; }
+.landing-content .marketing-cta .content{ max-width: 790px; width: 100%; }
+.landing-content .marketing-cta{ justify-content: space-between; }
+.landing-content .marketing-cta 
+.marketing-logo{ width: 280px; }
+.landing-content .marketing-cta .content-wrap{ justify-content: space-between; }
+.landing-content .marketing-cta .cta-text{ margin: 0 0 40px; max-width: 650px; }
+.landing-content .marketing-cta .marketing-logo.above { margin-top: -195px; }
+.landing-content .marketing-cta .cta-text:before{ content: ''; display: block; height: 4px; width: 75px; background: #a7ad00; margin: 30px 0 40px; }
+
+/*-------------- Marketing CTA Ends ----------------*/
+
+
+
+/*--- Testimonials ----*/
+.landing-content .testimonials{ position: relative; background-size: cover; background-repeat: no-repeat; background-position: center; 
+padding-top: 220px; }
+.landing-content .testimonials img{ width: 100%; object-fit: cover; object-position: top center; transition: 2s all ease;
+ transition: 0.5s all ease; }
+.landing-content .testimonials .section-head{ margin: 0 0 40px;  font-weight: 800; }
+.landing-content .testimonials .name { margin: 0; }
+.landing-content .testimonials .designation{ margin: 0 0 60px;  }
+.landing-content .testimonials:after{ content:''; position: absolute; display: block; z-index: 1; background: rgba(13,30,47,0.8); top:0; left: 0; 
+position: absolute; height: 100%; width: 100%; }
+.landing-content .testimonials .sslider{  position: relative; z-index: 3; }
+.landing-content .testimonials figure{ padding: 30px 70px 0 0; align-self: flex-end; }
+.landing-content .testimonials .content{ padding: 0 0 215px 70px; }
+.landing-content .testimonials .slick-track{ display: flex; }
+.landing-content .testimonials .slick-initialized .slick-slide{ align-self: flex-end; }
+/*--- Testimonials Slider ----*/
+
+
+/*------------ Featured Section ------------*/
+.landing-content .featured-section{ margin: 80px 0; }
+.landing-content .featured-section .text{ max-width: 610px; width: 100%; }
+.landing-content .featured-section .title:before { content: ''; display: block; height: 4px; width: 75px; background: #a7ad00; margin: 0 0 30px; }
+.landing-content .featured-section .logos{ display: flex; align-items: center; }
+.landing-content .featured-section .logos .logo:first-child{ padding-left: 0; border: none; }
+.landing-content .featured-section .logos .logo { border-left: 1px solid #a6a6a6; padding : 0 15px; }
+.landing-content .featured-section .swap figure{ padding : 0 0 0 70px; text-align: right; }
+.landing-content .featured-section figure{ padding : 0 70px 0 0; text-align: left; }
+.landing-content .featured-section .logos{ margin: 60px 0; }
+.landing-content .featured-section .button:hover{ color: #fff; background: #005cb9; }
+
+/*------------ Featured Section Ends ------------*/
+
+
+/*---------- Landing Simple CTA ---------------*/
+.landing-content .landing-cta{ position: relative; text-align: center; padding: 75px 0 85px; background-size: cover; background-repeat: no-repeat; 
+	background-attachment: fixed; }
+.landing-content .landing-cta:before { content: ''; display: block; height: 100%; width: 100%; background: rgba(0,92,185,0.85); position: absolute; 
+	z-index: 1; top:0; left:0; }
+.landing-content .landing-cta .content-wrap{ position: relative; z-index:2; max-width: 615px; margin: 0 auto; }
+.landing-content .landing-cta .cta-title:before{ content: ''; display: block; height: 4px; width: 75px; background: #fff; margin: 0 auto 30px; }
+.landing-content .landing-cta .cta-text{ margin: 20px 0 50px; }
+/*---------- Landing Simple CTA Ends ---------------*/
+
+/*-------------- Team Members -----------------*/
+.landing-content .team-members:after{ content:''; height: 100%; width: 100%; background: rgba(13,30,47,0.8); z-index: 2; position: absolute; top:0; 
+left: 0; display: block; }
+.landing-content .team-members .landing-wrapper{ position: relative; z-index: 5; }
+.landing-content .team-members{ position: relative; padding: 185px 0; }
+.landing-content .team-members .degrees, .landing-content .team-members .specifications{ margin: 45px 0 0; }
+.landing-content .team-members .green-txt{ margin: 0 0 7px; }
+.landing-content .team-members .personal .name{ margin: 45px 0 0; }
+.landing-content .team-members .right{ margin: 255px 0 0; padding: 0 0 70px 70px; }
+.landing-content .team-members .left{ padding: 0 70px 0 0; }
+.landing-content .team-members .slick-arrow{ bottom: 0; }
+.team-members .profile-img{ height: 216px; width: 216px; border-radius: 50%; }
+/*-------------- Team Members Ends -----------------*/
+
+@media screen and (max-width: 1750px){
+	
+	.landing-wrapper { max-width: 1370px; }
+	.page-template-landing-page .left-pull120 { transform: translateX(-90px); }
+	.landing-content .two-columns .wrap:not(.swap) .content, .landing-content .two-columns .swap figure{ padding: 0 0 0 60px; }
+	 .landing-content .team-members .right{ padding: 0 0 70px 60px; }
+	.landing-content .two-columns .wrap:not(.swap) figure, .landing-content .two-columns .swap .content , .landing-content .team-members .left{ 
+	padding: 0 60px 0 0; }
+	.landing-content .team-members .slick-arrow{ margin-left: -15px; }
+	
+}
+
+
+@media screen and (max-width: 1600px){
+	.landing-wrapper { max-width: 1250px; }
+	.landing-foot .footer-logo { margin: 0 0 30px; }
+	.landing-foot{ padding: 48px 0 30px; }
+	.footer-logo a img{ max-width: 435px; }
+	.landing-content .formWrapper{ padding: 40px 32px 35px; }
+	.landing-content .gform_wrapper .gform_footer input.button, .landing-content .gform_wrapper .gform_footer input[type=submit], 
+	.landing-content .landing-content .gform_wrapper .gform_page_footer input.button, 
+	.page-template-landing-page .button{ padding: 12px 22px; font-size: 18px; border-radius: 12px; }
+	.landing-content .button-wrap a + div, .landing-content .button-wrap a + a {margin-left: 22px; }
+	.landing-head .head-logo{ max-width: 435px; padding: 24px 20px; }
+	.landing-content .fonts43, .landing-content .two-columns h3 { font-size: 34px; }
+	.landing-content .two-columns p + h3 { margin-top: 35px; }
+	.landing-content h4, .landing-content .h4, .landing-content .fonts23, .landing-content .fonts23 p, .landing-foot .fonts23, 
+	.landing-content .fonts23 li, .landing-content .fonts23 a, .landing-content .fonts23 span { font-size: 19px; line-height: 1.35; 
+	 }
+	.landing-content .team-members .slick-arrow{ margin-left: -25px; }
+	.landing-content .gform_wrapper ul.gfield_checkbox li label, .landing-content .gform_wrapper ul.gfield_radio li label, 
+	.landing-content .gform_wrapper .top_label .gfield_label, .landing-content .gform_wrapper legend.gfield_label{ font-size: 16px; }
+	.landing-content .two-columns img{ width: 100%; display: block; height: auto; }
+	.page-template-landing-page .landing-content .gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]), .landing-content .gform_wrapper textarea, .page-template-landing-page .landing-content .gform_wrapper select{ font-size: 15px; padding: 10px 12px; height: 40px; border-radius: 8px }
+	.landing-content h1, .landing-content .h1, .landing-content .fonts114 { font-size: 76px; line-height: 1.15; line-height: 1.05; }
+	.landing-content .fonts70 {	font-size: 54px; }
+	.landing-content .landing-hero-banner .left{ max-width: 700px; padding: 110px 0 60px; }
+	.landing-content .landing-hero-banner .right { padding-left: 50px; max-width: calc(100% - 700px); }
+	.landing-content .landing-hero-banner{ min-height: 945px; }
+	body .landing-content .gform_wrapper ul li.gfield { margin-top: 26px; }
+	.landing-content .marketing-cta .cta-text{ max-width: 510px; }
+	.landing-content .testimonials{ padding-top: 175px; }
+	.landing-content .marketing-cta { padding: 270px 0 200px; }
+	.landing-content .team-members .degrees, .landing-content .team-members .specifications { margin: 34px 0 0; }
+	.team-members .profile-img { height: 185px; width: 185px; }
+	.landing-content .featured-section .logos { margin: 44px 0; }
+	.landing-content .two-columns .two-cols-row { margin: 70px 0; }
+	.landing-content .team-members{ padding: 145px 0; }
+	.landing-content .two-columns .wrap:not(.swap) figure, .landing-content .two-columns .swap .content, .landing-content .team-members .left{ 
+	padding: 0 44px 0 0; }
+	.landing-content .two-columns .wrap:not(.swap) .content, .landing-content .two-columns .swap figure{ padding: 0 0 0 44px; }
+	.landing-content .team-members .right{ padding: 0 0 70px 44px; margin: 175px 0 0; }
+	.landing-content .team-members .personal .name { margin: 32px 0 0; }
+	.landing-content .testimonials .designation { margin: 0 0 45px; }
+	.landing-content .slick-arrow{ bottom: 125px; }
+	.landing-content .gform_wrapper .gform_footer { margin: 36px 0 0; }
+	.landing-content .formWrapper .below-form { padding: 22px 0 0; }
+	.landing-content .testimonials .content { padding: 0 0 185px 40px; }
+	.landing-content .marketing-cta .cta-text:before{ margin: 24px 0 34px; }
+	.landing-content .marketing-cta .cta-text { margin: 0 0 34px; }
+	.landing-content .marketing-cta .marketing-logo.above { margin-top: -155px; }
+	.landing-content .marketing-cta .marketing-logo img { max-height: 185px; }
+	.landing-content .landing-cta{ padding: 65px 0 75px; }
+	.landing-content .fonts34{ font-size: 30px; }
+	
+}
+
+@media screen and (max-width: 1500px){
+
+	.landing-wrapper { max-width: 1170px; }
+	.landing-content .landing-hero-banner .left { max-width: 650px; }
+	.landing-content .landing-hero-banner .right{ max-width: calc(100% - 650px); }
+	.landing-content .marketing-cta .marketing-logo { width: 190px; }
+	.landing-content .two-columns .main-heading { margin: 60px 0 0; }
+	.landing-content .testimonials .content { padding: 0 0 180px 25px; }
+	.landing-content .testimonials .slick-arrow{ left: calc(50% + 25px); }
+	.landing-content .testimonials .slick-arrow.next{ left : calc(50% + 90px) }
+	.landing-content .gform_wrapper.gf_browser_chrome .gfield_checkbox li input, .landing-content .gform_wrapper.gf_browser_chrome .gfield_checkbox 
+	li input[type=checkbox], .landing-content .gform_wrapper.gf_browser_chrome .gfield_radio li input[type=radio] { margin: 0 8px 0 0; }
+	.page-template-landing-page .left-pull120 { transform: translateX(-60px); }
+	.landing-content .marketing-cta .marketing-logo.above { margin-top: -115px; }
+	.landing-content .fonts34{ font-size: 28px; }
+	
+}
+
+
+
+
+@media screen and (max-width: 1440px){
+		
+	.landing-content .slick-arrow{ height: 40px; width: 40px; background-size: 11px; }
+	.landing-content .featured-section .title:before{ margin: 0 0 24px; }
+	.landing-content .testimonials .slick-arrow.next { left: calc(50% + 80px); }
+	.landing-content h4, .landing-content .h4, .landing-content .fonts23, .landing-content .fonts23 p, .landing-foot .fonts23, .landing-content .fonts23 li, .landing-content .fonts23 a, 
+	.landing-content .fonts23 span{ font-size: 18px; }
+	.landing-content .gform_wrapper .gform_footer input.button, .landing-content .gform_wrapper .gform_footer input[type=submit], 
+	.landing-content .landing-content .gform_wrapper .gform_page_footer input.button, 
+	.landing-content .gform_wrapper .gform_page_footer input[type=submit], .page-template-landing-page .button{ font-size: 16px; padding: 10px 16px;
+	border-radius: 8px; }	
+	.button .video-icon:before{ height: 26px; width: 26px; margin: -3px 10px 0 0; }
+	.landing-content .fonts70 { font-size: 46px; }
+	.landing-content .landing-cta .cta-title:before{ margin: 0 auto 24px; }
+	.landing-content .landing-cta .content-wrap{ max-width: 545px; }
+	.landing-content .gform_wrapper .gform_footer input.button, .landing-content .gform_wrapper .gform_footer input[type=submit],
+	.landing-content .gform_wrapper .gform_page_footer input.button, .landing-content .gform_wrapper .gform_page_footer input[type=submit]{ 
+	width: 160px; }
+	.landing-content .testimonials .designation, .landing-content .testimonials .section-head{ margin: 0 0 32px; }
+	.landing-content .testimonials { padding-top: 145px; }
+	.landing-content .landing-cta .cta-text { margin: 20px 0 35px; }
+	.landing-content .marketing-cta .content {  max-width: 620px; }
+	.landing-content .slick-arrow { bottom: 100px; }
+	.landing-content .featured-section figure{ padding: 0 60px 0 0; }
+	.landing-content .featured-section .swap figure{ padding: 0 0 0 60px; }
+	.landing-content .featured-section{ margin: 60px 0 0; }
+	.landing-content .slick-arrow.next{ left: calc(50% + 125px); }
+	.landing-content .two-columns .two-cols-row p + p{ margin: 32px 0 0; }
+	.landing-content .two-columns .two-cols-row li:not(:last-child){ margin: 0 0 16px; }
+	
+}
+
+@media screen and (max-width: 1366px){
+	
+	.landing-wrapper { max-width: 1070px; }
+	.landing-content h1, .landing-content .h1, .landing-content .fonts114 {	font-size: 62px; }
+	.landing-content .landing-hero-banner .description:before{ margin: 23px 0 34px; }
+	.landing-content .landing-hero-banner .left { max-width: 570px; padding: 80px 0 40px; }
+	.landing-content .landing-hero-banner .right { max-width: calc(100% - 570px); }
+	.landing-content .fonts43, .landing-content .two-columns h3 { font-size: 28px; }
+	body .landing-content .gform_wrapper ul li.gfield { margin-top: 20px; }
+	.landing-content .fonts70 { font-size: 40px; }
+	.landing-content .two-columns .wrap:not(.swap) figure, .landing-content .two-columns .swap .content, .landing-content .team-members .left { 
+	padding: 0 24px 0 0; }
+	.landing-content .two-columns .wrap:not(.swap) .content, .landing-content .two-columns .swap figure { padding: 0 0 0 24px; }
+
+	.landing-content .team-members .right{ padding: 0 0 65px 24px; }
+	.landing-content .team-members .slick-arrow{ margin-left: -45px; }
+	.landing-content .team-members { padding: 122px 0; }
+	.team-members .profile-img { height: 155px; width: 155px; }
+	.landing-content .team-members .personal .name { margin: 24px 0 0; }
+	.landing-content .formWrapper { padding: 28px 32px 28px; }
+	.landing-content .gform_wrapper.gf_browser_chrome .gfield_checkbox li input, .landing-content .gform_wrapper.gf_browser_chrome 
+	.gfield_checkbox li input[type=checkbox], .landing-content .gform_wrapper.gf_browser_chrome .gfield_radio li input[type=radio]{ height: 16px; 
+	width: 16px; }
+	body .landing-content .gform_wrapper .top_label div.ginput_container{ margin-top: 4px; }
+	.landing-content .two-columns .two-cols-row { margin: 60px 0; }
+	.landing-content .featured-section .logos .logo{ max-width: 165px; }
+	.landing-foot .footer-logo , .landing-head .head-logo { max-width: 420px; }
+	.landing-content .button-wrap a + div, .landing-content .button-wrap a + a { margin-left: 16px; }
+	.landing-content .two-columns .two-cols-row { margin: 55px 0 65px; }
+	.landing-content .slick-arrow { bottom: 85px; }
+	.landing-content .featured-section .logos { margin: 24px 0; }
+	.landing-content .two-columns p + h3 { margin: 24px 0 6px; }
+	.landing-content .marketing-cta .content { max-width: 590px; }
+	.landing-content .marketing-cta .cta-text:before { margin: 18px 0 28px; }
+	.landing-content .two-columns .main-heading:before{ margin: 0 0 22px; }
+	.landing-content .gform_wrapper .gform_footer { margin: 24px 0 0; }
+	.landing-content .two-columns .main-heading { margin: 50px 0 0; }
+	.landing-foot { padding: 36px 0 24px; }
+	.landing-content .marketing-cta { padding: 220px 0 155px; }
+	.landing-content .formWrapper .below-form a{ font-size: 14px; }
+	.landing-content .marketing-cta .marketing-logo.above { margin-top: -95px; }
+	.landing-content .testimonials .content { padding: 0 0 150px 25px; }
+
+
+}
+
+
+@media screen and (max-width: 1250px){
+	.landing-wrapper { max-width: 1000px; }
+	.landing-content .fonts43, .landing-content .two-columns h3{ font-size: 26px; }
+	.page-template-landing-page .left-pull120 { transform: translateX(-50px); }
+	.landing-content h4, .landing-content .h4, .landing-content .fonts23, .landing-content .fonts23 p, .landing-foot .fonts23, 
+	.landing-content .fonts23 li, .landing-content .fonts23 a, .landing-content .fonts23 span { font-size: 16px; }
+	.landing-content .gform_wrapper ul.gfield_checkbox li label, .landing-content .gform_wrapper ul.gfield_radio li label,
+	.landing-content .gform_wrapper .top_label .gfield_label, .landing-content .gform_wrapper legend.gfield_label{ font-size: 14px; }
+	.landing-content .gform_wrapper .gform_footer input.button, .landing-content .gform_wrapper .gform_footer input[type=submit],
+	.landing-content .gform_wrapper .gform_page_footer input.button,
+	.landing-content .gform_wrapper .gform_page_footer input[type=submit]{ width: 145px; }
+	.landing-content h1, .landing-content .h1, .landing-content .fonts114{ font-size: 55px; }	
+	.landing-content .marketing-cta .marketing-logo { width: 140px; }
+	.landing-content .marketing-cta { padding: 160px 0 120px; }
+	.landing-foot .footer-logo { margin: 0 0 24px; }
+	.landing-content h4, .landing-content .h4, .landing-content .fonts23, .landing-content .fonts23 p, 
+	.landing-foot .fonts23, .landing-content .fonts23 li, .landing-content .fonts23 a, .landing-content .fonts23 span{ font-size: 16px; }
+	.landing-content .featured-section .logos { margin: 24px 0; }
+	.landing-foot .footer-logo, .landing-head .head-logo { max-width: 350px; }
+	.landing-content .featured-section .logos .logo { max-width: 145px; }
+	.landing-content .gform_wrapper .gform_footer input.button, .landing-content .gform_wrapper .gform_footer input[type=submit], 
+	.landing-content .landing-content .gform_wrapper .gform_page_footer input.button, .landing-content .gform_wrapper .gform_page_footer input[type=submit], 
+	.page-template-landing-page .button{ font-size: 14px; }
+	.landing-content .slick-arrow { bottom: 45px; }
+	.landing-content .marketing-cta .content { max-width: 450px; }
+	.landing-content .two-columns .wrap:not(.swap) .content, .landing-content .two-columns .swap figure, .landing-content .team-members .right {
+    padding: 0 0 0 20px; }
+    .landing-content .two-columns .wrap:not(.swap) figure, .landing-content .two-columns .swap .content, .landing-content .team-members .left {
+    padding: 0 20px 0 0; }
+    .landing-content .marketing-cta .marketing-logo.above { margin-top: -55px; }
+    .landing-content .featured-section{ margin: 55px 0; }
+    .landing-content .landing-cta { padding: 45px 0 55px; }
+    .landing-content .team-members { padding: 95px 0; }
+
+    .landing-content .testimonials .content { padding: 0 0 110px 25px; }
+
+}
+
+
+@media screen and (max-width: 1199px){
+
+	.landing-wrapper { max-width: 982px; padding: 0 16px; }
+	.landing-content .landing-hero-banner .left { max-width: 520px; }
+	.page-template-landing-page .left-pull120{ transform: translateX(0); }
+	.landing-content .landing-hero-banner .right { max-width: calc(100% - 520px); padding-left: 30px; }
+	.landing-content .testimonials figure { padding: 30px 45px 0 0; }
+	.landing-content .testimonials .designation, .landing-content .testimonials .section-head{ margin: 0 0 22px; }
+	.landing-content .testimonials { padding-top: 90px; }
+	.landing-content .landing-hero-banner { min-height: auto; padding-top: 100px; }
+	.page-template-landing-page .landing-content .gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]),
+	.landing-content .gform_wrapper textarea, .page-template-landing-page .landing-content .gform_wrapper select{ font-size: 14px;
+    padding: 8px 12px; height: 34px; border-radius: 5px;  }
+    body .landing-content .gform_wrapper .top_label div.ginput_container{ margin-top: 0; }
+    .landing-content .formWrapper { padding: 28px 16px 28px; }
+
+	.landing-content .two-columns .main-heading:before, .landing-content .landing-hero-banner .description:before,
+    .landing-content .marketing-cta .cta-text:before,
+    .landing-content .landing-cta .cta-title:before,
+    .landing-content .featured-section .title:before{ width: 45px; height: 2px; }
+    .landing-content .two-columns .two-cols-row {  margin: 35px 0 65px; }
+    .landing-content .gform_wrapper ul.gfield_checkbox li label, .landing-content .gform_wrapper ul.gfield_radio li label, .landing-content .gform_wrapper .top_label .gfield_label, .landing-content .gform_wrapper legend.gfield_label{
+    margin: 0; }
+    .landing-content .marketing-cta { padding: 120px 0 75px; }
+    .landing-content .formWrapper .below-form a{ font-size: 12px; }
+    .landing-content .two-columns .two-cols-row li:not(:last-child){ margin: 0 0 12px; }
+    .landing-content .two-columns .two-cols-row p + p{ margin: 28px 0 0; }
+
+
+}
+
+@media screen and (max-width: 1023px){
+	.landing-content h1, .landing-content .h1, .landing-content .fonts114 { font-size: 48px; }
+	.landing-content .landing-hero-banner .left{ max-width: 450px; }
+	.landing-content .landing-hero-banner .right{ max-width: calc(100% - 450px); }
+	.landing-content .fonts70 { font-size: 34px; }
+	.landing-content .fonts43, .landing-content .two-columns h3 { font-size: 22px; }
+	body .landing-content .gform_wrapper ul li.gfield { margin-top: 12px; }
+	.landing-content .formWrapper .below-form { padding: 12px 0 0; }
+	.landing-content .gform_wrapper .gform_footer { margin: 14px 0 0; }
+	.landing-content .team-members .degrees, .landing-content .team-members .specifications{ margin: 24px 0 0; }
+
+
+}
+
+
+@media screen and (max-width: 960px){
+
+	/*.landing-content h4, .landing-content .h4, .landing-content .fonts23, .landing-content .fonts23 p, .landing-foot .fonts23,
+	.landing-content .fonts23 li, .landing-content .fonts23 a, .landing-content .fonts23 span{ font-size: 15px;	}*/
+
+	.landing-content .fonts43, .landing-content .two-columns h3 { font-size: 20px; }
+	.page-template-landing-page .landing-content .gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]), .landing-content .gform_wrapper textarea, .page-template-landing-page .landing-content .gform_wrapper select {
+    font-size: 13px;  padding: 7px 12px 5px; height: 28px; }
+    .landing-content h1, .landing-content .h1, .landing-content .fonts114{ font-size: 40px; }
+    .landing-content .gform_wrapper .gform_footer input.button, .landing-content .gform_wrapper .gform_footer input[type=submit], .landing-content .landing-content .gform_wrapper .gform_page_footer input.button, .landing-content .gform_wrapper .gform_page_footer input[type=submit], .page-template-landing-page .button {
+    padding: 6px 12px; border-radius: 6px; }
+    .landing-content .gform_wrapper .gform_footer input.button, .landing-content .gform_wrapper .gform_footer input[type=submit], .landing-content .gform_wrapper .gform_page_footer input.button, .landing-content .gform_wrapper .gform_page_footer input[type=submit]{
+    width: 126px; }
+    .landing-content .two-columns .two-cols-row { margin: 35px 0 40px; }
+    .landing-content .featured-section{ margin: 45px 0; }
+    .button .video-icon:before { height: 22px; width: 22px; margin: -3px 8px 0 0; }
+
+}
+
+
+@media screen and (max-width: 850px){
+	.landing-content .landing-hero-banner .left { max-width: 375px; }
+	.landing-content .landing-hero-banner .right { max-width: calc(100% - 375px); padding-left: 15px; }
+
+	.landing-content .two-columns .two-cols-row p + p{ margin: 22px 0 0; }
+}
+
+@media screen and (max-width: 767px){
+	.landing-content .marketing-cta .marketing-logo.above{ margin: 0; }
+	.landing-content .team-members .slick-arrow{ margin: 0; }
+	.landing-content .slick-arrow{ left: calc(50% - 32px); }
+	.landing-content .slick-arrow.next { left: calc(50% + 24px); }
+	.landing-content .wid50,
+	.landing-content .landing-hero-banner .left,
+	.landing-content .landing-hero-banner .right{ width: 100%; max-width: 100%; }
+	.landing-content .dflex.swap{ flex-direction: wrap; }
+	.landing-content .formWrapper { margin: 0 auto 40px; max-width: 350px; }
+	.landing-content .fonts70 { font-size: 30px; }
+	.landing-content .featured-section .swap figure, .landing-content .featured-section figure,
+	.landing-content .testimonials .content, .landing-content .testimonials figure, .landing-content .landing-hero-banner .right,
+	.landing-content .two-columns .wrap:not(.swap) .content, .landing-content .two-columns .swap figure, .landing-content .team-members .right,
+	.landing-content .two-columns .wrap:not(.swap) figure, .landing-content .two-columns .swap .content, .landing-content .team-members .left
+	{ padding: 0;  }
+
+	.featured-section figure img, 
+	.landing-content .two-columns figure img{ max-width: 420px; margin: 0 auto 35px; }
+	.featured-section figure img{ display: block; }
+
+	.landing-content .testimonials .dflex.wrap { max-width: 420px; margin: 0 auto 116px; }
+	.landing-content .testimonials .content{ margin: 45px 0 0; }
+	.landing-content .testimonials .name{ font-size: 32px; }
+	.landing-content .testimonials .designation, .landing-content .testimonials .section-head {
+    margin: 0 0 12px; }
+    .landing-content .testimonials .review{ font-size: 16px; }
+    .landing-wrapper{ padding: 0 50px; }
+    .landing-content .testimonials .slick-arrow,
+    .landing-content .testimonials .slick-arrow.next { left: 50%; margin-left: -50px; }
+    .landing-content .testimonials .slick-arrow.next { margin-left: 0; }
+    .landing-content .testimonials .slick-initialized .slick-slide{ align-self: center; }
+    .landing-content .slick-arrow { height: 32px; width: 32px; background-size: 8px; background-position: left 10px center; }
+	.landing-content .marketing-cta .dflex.wrap { flex-wrap: wrap-reverse; }
+    .landing-content .marketing-cta .content{ max-width: 100%; margin: 25px 0 0; }
+    .landing-content .marketing-cta { padding: 60px 0 45px; }
+    .landing-content .landing-hero-banner .left{ padding: 20px 0 40px; }
+    .landing-content .landing-hero-banner .description:before { margin: 14px 0 22px; }
+    .landing-content .landing-hero-banner .description{ margin: 0 0 28px; font-size: 16px; }
+    .landing-content .team-members .right{ margin: 40px 0 100px; }
+
+}
+
+
+@media screen and (max-width: 640px){
+	.featured-section figure img, 
+	.landing-content .two-columns figure img{ max-width: 100%; width: 100%; height: auto; }
+}
+
+@media screen and (max-width: 589px){
+	.landing-wrapper{ padding: 0 18px; }
+	.landing-foot .footer-logo, .landing-head .head-logo{ max-width: 286px; }
+	.landing-head .head-logo{ padding: 14px 10px; }
+	.featured-section figure img, .landing-content .two-columns figure img{ max-width: 100%; }
+	.landing-content .slick-arrow{ left: calc(50% - 48px); }
+	.landing-content .slick-arrow.next{ left: calc(50% + 0px); }
+	.landing-content .team-members .right { margin: 28px 0 80px; }
+	.featured-section figure img, .landing-content .two-columns figure img{ margin: 0 auto 27px; }
+	.landing-content .gform_wrapper .gform_footer{ display: block; }
+	.landing-content .gform_wrapper .gform_footer .tel-link{ margin: 12px 0 0; }
+	.landing-content .testimonials .name { font-size: 24px; }
+	.landing-content .testimonials img{ max-height: 300px; width: auto; }
+	.landing-content .landing-hero-banner br{ display: none; }
+}
