@@ -97,6 +97,14 @@ h5, .h5{ font-size: 18px; }
 h6, .h6{ font-size: 16px; }
 address, caption, label,
 span, a,figcaption, textarea, input, li, p{ font-size: 16px; }
+
+.descriptionText{
+	
+	p, li{ margin: 12px 0; }
+	figure, ul, ol, .h1, .h2, .h3, .h4, .h5, .h6, form{ margin: 16px 0; }
+
+}
+
 .upCase{ text-transform: uppercase; }
 
 /*--------- Displays ------------*/
@@ -108,6 +116,8 @@ span, a,figcaption, textarea, input, li, p{ font-size: 16px; }
 	&.dflex.wrapRev{ flex-wrap: wrap-reverse; }
 	&.vcenter{ align-items: center; }
 }
+
+.aligncenter > img{ margin: 0 auto; }
 .textCenter{ text-align: center; }
 
 .paddTb40{ padding: 22px 0; }
