@@ -1,0 +1,31 @@
+.gallery  {
+    .wrap {
+        @include minmedia(768px) {
+            @include colset(3,16);
+        }
+
+        @include minmedia(1024px) {
+            @include colset(4,22);
+        }
+
+        .column {
+            @include minmedia(768px) {
+                margin-bottom: 16px;
+            }
+
+            @include minmedia(1024px) {
+                margin-bottom: 22px;
+            }
+
+        }
+
+    }
+
+    a {
+        height: 100%;
+    }
+
+    img {
+        height: 100%; object-fit: cover;
+    }
+}

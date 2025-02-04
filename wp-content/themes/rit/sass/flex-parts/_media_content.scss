@@ -1,0 +1,31 @@
+.mediaCont {
+
+
+  @include minmedia(768px) {
+    .mediaWrap {
+        height: 500px; width: 450px;
+    }
+
+    .contWrap {
+        max-width: calc(100% - 450px); padding-left: 44px;
+    }
+
+    .reverse {
+      .contWrap {
+        padding-left: 0; padding-right: 44px;
+      }
+
+      &.leftPull {
+        padding-left: 44px;
+      }
+    }
+
+    .rightPull {
+      .contWrap {
+        padding-right: 44px;
+      }
+    }
+
+  }
+ 
+}

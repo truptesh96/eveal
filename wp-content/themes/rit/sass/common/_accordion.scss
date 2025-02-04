@@ -1,0 +1,14 @@
+/*-------- Accordion ------*/
+.faqItem {
+    border: 2px solid #101010; margin-bottom: 12px; padding: 12px; 
+     
+    .siteCont {
+      display: none; margin: 30px 0;
+    }
+
+    .faqTrig { cursor: pointer; }
+    .active {
+      .plusIcon::after { transform: translate(-50%, -50%) rotate(90deg); }
+    }
+}
+

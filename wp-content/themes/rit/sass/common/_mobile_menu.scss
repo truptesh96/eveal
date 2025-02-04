@@ -1,0 +1,83 @@
+/*--- Toggle Menu --*/
+$menuBtnSize: 34px;
+$menuPrimary: #666;
+$menuText: #fff;
+$menuFonts : 22px;
+.menuToggle { flex-wrap: nowrap; justify-content: center; align-items: center; min-width: inherit; padding: 0; background: transparent; width: $menuBtnSize; 
+  height: $menuBtnSize; border: none; font-size: 0; transition: 0.65s ease;
+    
+  &:after, &:before { content: ''; display: inline-block; width: $menuBtnSize; transition: .45s ease margin; height: 2px; margin: 4px 0; background: #f00; }
+
+  &[aria-expanded="true"] { 
+    transform: rotate(360deg);
+    &:after, &:before { margin: -2px 0 0; }
+    &:before { transform: rotate(45deg); }
+    &:after { transform: rotate(-45deg); }
+    & + .navig {
+      right: 0;
+    }
+  }
+}
+
+
+.nav-menu { margin: 0; padding: 0; 
+  
+  li { list-style:none; }
+
+  > .page_item {
+    width: 100%;
+      
+
+    &:after, &:before { left: calc(100% - 22px); }
+    
+  
+  }
+ 
+}
+
+.menu-site-menu-container { position: fixed; width: 100%; height: 100vh; background: $menuPrimary; right: -160vw; z-index: 999; top: 128px; transition: 0.86s ease right;
+ overflow: auto;
+ }
+
+
+.toggled .menu-site-menu-container {
+  right: 0;
+}
+
+
+
+// Image Hovered
+$subMenuButtonSize: 24px;
+$subMenuButtonColor: #fff;
+$subMenuButtonActiveColor: $menuPrimary;
+
+.navig  { 
+  
+  li:has(.submenu ) {
+    > a {
+      max-width: calc(100% - $subMenuButtonSize);
+    }
+  }
+
+  .toggleTrigger {
+    width: $subMenuButtonSize; height: $subMenuButtonSize; background: $subMenuButtonColor;
+  }
+  
+  @include minmedia(768px) { 
+    max-width: 50%; padding-right: 44px;
+  }
+
+  a { color: $menuText; text-decoration: none; font-size: $menuFonts; width: 100%; padding: 12px 22px; } 
+
+  @include minmedia(768px) { 
+    .hasBg { position: absolute; right: 0; top: 0; height: 100vh; display: block; width: 50%; opacity: 0; transition: 0.75s ease; }
+  }
+
+  li {
+    &:hover {
+      .hasBg { opacity: 1; }
+    }
+  }
+
+ 
+}

@@ -1,0 +1,14 @@
+.heroBanner { 
+
+    @include minmedia(768px) {
+        
+    }
+
+    .slide {
+        min-height: 770px; display: flex;
+    }
+
+    .contWrap { display: flex; align-items: flex-start; max-width: 900px; margin: 0 auto; flex-direction: column; justify-content: center; padding: 120px 0; text-align: left;
+    }
+    
+}

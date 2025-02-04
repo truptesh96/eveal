@@ -1,0 +1,81 @@
+@mixin centerBlock { display: block; margin-left: auto; margin-right: auto; }
+
+
+@mixin colset( $columns:2, $gap: 24 ) { 
+    > .column { width: calc( ( 100% - ( #{$columns} - 1 ) * #{$gap}px  ) / #{$columns} ); }
+    > .column:not(:nth-child(#{$columns}n) ) { 
+        margin-right: #{$gap}px;
+    }
+
+	> .column:nth-child(#{$columns}n) { 
+        margin-right: 0;
+    }
+}
+
+@mixin typoSet( $tagsList, $screen ) {
+	
+	@include minmedia($screen) {
+
+		@each $name, $size, $lineHeight in $tagsList {
+			#{$name} {
+			  font-size: #{ $size }px; line-height: #{ $lineHeight };
+			}
+		}
+		
+	}
+}
+
+@mixin minmedia($screen) {
+	@media (min-width: $screen) { @content; }
+}
+
+
+ @mixin positionAbsolute($top: 0, $left: 0, $height: 100%, $width: 100%) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  width: $width;
+  height: $height;
+  z-index: 0;
+ }
+ 
+ @mixin plusicon($size: 12px, $color: #101010, $height: 2px) {
+	position: relative; display: inline-block; width: $size; font-style: normal;
+	height: $size; cursor: pointer;
+	
+	&::before, &:after { content: ''; display: inline-block; width: $height; height: $size; 
+	  background:  $color; position: absolute; top: 50%; left: 50%; transition: 0.75s ease;
+	  transform: translate(-50%, -50%); }
+  
+	&::before { transform: translate(-50%, -50%) rotate(90deg); }
+    
+  }
+
+ @mixin transtext($thickness: 1px, $color: #0ff) { 
+	-webkit-text-stroke-width: $thickness;
+	-webkit-text-stroke-color: $color;
+	color: transparent;
+ }
+
+
+
+
+ @keyframes marquee {
+    from {
+        transform: translateX(0%)
+    }
+
+    to {
+        transform: translateX(-100%)
+    }
+}
+
+@keyframes marqueeRight {
+    from {
+        transform: translateX(-100%)
+    }
+
+    to {
+        transform: translateX(0%)
+    }
+}
