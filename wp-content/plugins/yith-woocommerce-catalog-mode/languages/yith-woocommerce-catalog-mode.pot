@@ -1,0 +1,275 @@
+# Copyright (C) 2024 YITH
+# This file is distributed under the same license as the YITH WooCommerce Catalog Mode package.
+msgid ""
+msgstr ""
+"Project-Id-Version: YITH WooCommerce Catalog Mode 2.41.1\n"
+"Report-Msgid-Bugs-To: "
+"https://wordpress.org/support/plugin/yith-woocommerce-catalog-mode\n"
+"POT-Creation-Date: 2024-12-11 10:34:53+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: class-yith-woocommerce-catalog-mode.php:184
+#: plugin-options/settings-options.php:15
+msgid "Settings"
+msgstr ""
+
+#: init.php:37
+#. translators: %s name of the plugin
+msgid "%s is enabled but not effective. In order to work, it requires WooCommerce."
+msgstr ""
+
+#: init.php:56
+#. translators: %s name of the plugin
+msgid ""
+"You can't activate the free version of %s while you are using the premium "
+"one."
+msgstr ""
+
+#: plugin-options/settings-options.php:19
+msgid "Catalog mode for administrators"
+msgstr ""
+
+#: plugin-options/settings-options.php:22
+msgid "If enabled, the Catalog Mode rules will also work for admin users."
+msgstr ""
+
+#: plugin-options/settings-options.php:27
+msgid "Disable shop"
+msgstr ""
+
+#: plugin-options/settings-options.php:30
+msgid ""
+"Use this option to hide the \"Cart\" page, \"Checkout\" page and all the "
+"\"Add to Cart\" buttons in the shop."
+msgstr ""
+
+#: plugin-options/settings-options.php:37
+msgid "Hide \"Add to Cart\" in:"
+msgstr ""
+
+#: plugin-options/settings-options.php:38
+msgid "Choose where to hide \"Add to Cart\"."
+msgstr ""
+
+#: plugin-options/settings-options.php:47
+msgid "All pages"
+msgstr ""
+
+#: plugin-options/settings-options.php:48
+msgid "Shop page"
+msgstr ""
+
+#: plugin-options/settings-options.php:49
+msgid "Product page"
+msgstr ""
+
+#: plugin-options/settings-options.php:67
+msgid "Hide product variations"
+msgstr ""
+
+#: plugin-options/settings-options.php:70
+msgid "Use this option to hide product variations where \"Add to cart\" is hidden."
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"<code><strong>YITH WooCommerce Catalog Mode</strong></code> allows hiding "
+"product prices, cart and checkout from your store and turning it into a "
+"performing product catalogue. You will be able to adjust your catalogue "
+"settings as you prefer based on your requirements. <a "
+"href=\"https://yithemes.com/\" target=\"_blank\">Get more plugins for your "
+"e-commerce shop on <strong>YITH</strong></a>"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:145
+msgctxt "general settings tab name"
+msgid "Settings"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:147
+#: class-yith-woocommerce-catalog-mode.php:186
+msgctxt "general settings tab description"
+msgid "Configure the plugin's general settings."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:150
+msgctxt "exclusion settings tab name"
+msgid "Exclusion List"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:154
+msgctxt "inquiry form settings tab name"
+msgid "Inquiry Form"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:156
+msgctxt "inquiry form settings tab description"
+msgid "Configure the inquiry form settings."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:159
+msgctxt "buttons & labels settings tab name"
+msgid "Buttons & Labels"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:161
+msgctxt "buttons & labels settings tab description"
+msgid "Create buttons and labels to use with the plugin features."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:167
+#. translators: %1$s opening B tag - %2$s closing B tag
+msgctxt "[HELP TAB] Video title"
+msgid ""
+"Check this video to learn how to %1$sconvert your shop into a product "
+"catalog%2$s"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:216
+msgctxt "[PREMIUM TAB] Item title"
+msgid "Advanced options for enabling catalog mode"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:220
+msgctxt "[PREMIUM TAB] Item title"
+msgid "Choose which products to activate catalog mode for"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:224
+msgctxt "[PREMIUM TAB] Item title"
+msgid ""
+"Use the built-in builder to create buttons and text labels to show on your "
+"products"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:228
+msgctxt "[PREMIUM TAB] Item title"
+msgid "Show an information request form on product pages"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:217
+msgctxt "[PREMIUM TAB] Item description"
+msgid ""
+"In the premium version you can choose whether to enable catalog mode only "
+"for unregistered users or for users from certain countries. You can also "
+"decide to enable the catalog option - and thus prevent the purchase of new "
+"products - on specific days of the week or times of the year: the ideal "
+"option if you want to \"close\" your shop during the summer vacations or "
+"for personal reasons."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:221
+msgctxt "[PREMIUM TAB] Item description"
+msgid ""
+"Do you want to sell your products normally and hide the price and \"Add to "
+"cart\" button only on a specific product? Thanks to the exclusion list you "
+"can decide on which products to activate catalog mode and manage your shop "
+"with maximum versatility."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:225
+msgctxt "[PREMIUM TAB] Item description"
+msgid ""
+"With the free version, you can hide prices and \"Add to cart\" buttons, but "
+"with the premium version you can go further: thanks to the builder you can "
+"create custom buttons and messages to show on your products, such as \"Call "
+"xxx number to check availability and prices\" or a call to action that "
+"pushes the user to buy the product in an ad hoc landing page."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:229
+msgctxt "[PREMIUM TAB] Item description"
+msgid ""
+"An information request form is the easiest and most effective way to push "
+"your customers for immediate contact and to quickly respond to their "
+"concerns or requests for a quote. You can use the form in the plugin or "
+"insert an ad hoc form created with the Contact Form 7, Gravity Form, Ninja "
+"Forms, Formidable Forms, or WP Forms plugins."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:242
+msgctxt "[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Wishlist"
+msgid ""
+"Allow your customers to create lists of products they want and share them "
+"with family and friends."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:250
+msgctxt "[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Gift Cards"
+msgid ""
+"Sell gift cards in your shop to increase your earnings and attract new "
+"customers."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:258
+msgctxt ""
+"[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Ajax Product "
+"Filter"
+msgid ""
+"Help your customers to easily find the products they are looking for and "
+"improve the user experience of your shop."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:266
+msgctxt "[YOUR STORE TOOLS TAB] Description for plugin YITH Bookings"
+msgid ""
+"Enable a booking/appointment system to manage renting or booking of "
+"services, rooms, houses, cars, accommodation facilities and more."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:274
+msgctxt ""
+"[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Product "
+"Add-Ons"
+msgid ""
+"Add paid or free advanced options to your product pages using fields like "
+"radio buttons, checkboxes, drop-downs, custom text inputs, and more."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:282
+msgctxt ""
+"[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Dynamic "
+"Pricing and Discounts"
+msgid ""
+"Increase conversions through dynamic discounts and price rules, and build "
+"powerful and targeted offers."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:290
+msgctxt ""
+"[YOUR STORE TOOLS TAB] Description for plugin YITH WooCommerce Customize My "
+"Account"
+msgid ""
+"Customize the My Account page of your customers by creating custom sections "
+"with promotions and ad-hoc content based on your needs."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:298
+msgctxt "[YOUR STORE TOOLS TAB] Description for plugin Recover Abandoned Cart"
+msgid ""
+"Contact users who have added products to the cart without completing the "
+"order and try to recover lost sales."
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:316
+msgctxt "[WELCOME MODAL] Modal description"
+msgid ""
+"Convert your shop into an online catalog by hiding prices and/or \"Add to "
+"Cart\" buttons"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:328
+msgctxt "[WELCOME MODAL] Item title"
+msgid "Set up the <mark>Catalog Mode</mark> in your shop"
+msgstr ""
+
+#: class-yith-woocommerce-catalog-mode.php:329
+msgctxt "[WELCOME MODAL] Item description"
+msgid "and embark on a new adventure!"
+msgstr ""
