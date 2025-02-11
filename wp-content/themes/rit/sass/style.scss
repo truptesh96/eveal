@@ -23,21 +23,21 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
 /* Import variables and mixins. */
-@import "common/mixins";
-@import "common/variables";
-@import "common/slick-min";
-@import "common/reset";
-@import "common/mobile_menu";
-@import "common/accordion";
-@import "common/tabs";
-@import "common/footer";
+@use "common/slick-min";
+@use "common/reset";
+@use "common/mobile_menu";
+@use "common/accordion";
+@use "common/tabs";
+@use "common/footer";
 
 /* Plugins */
-@import "flex-parts/hero_banner";
-@import "flex-parts/media_content";
-@import "flex-parts/gallery";
-@import "flex-parts/location_tabs";
-@import "flex-parts/categories_grid";
+@use "flex-parts/hero_banner";
+@use "flex-parts/media_content";
+@use "flex-parts/gallery";
+@use "flex-parts/location_tabs";
+@use "flex-parts/categories_grid";
+@use "flex-parts/usp";
 
 /* Woocommerce */
-@import "woocommerce/woocommerce";
+@use "woocommerce/woocommerce";
+

@@ -1,0 +1,38 @@
+@use "../common/mixins";
+
+.usp { position: relative; overflow: hidden;
+
+    &:before, .before,  &:after, .after { content: ''; height: 460px; width: 460px; background: linear-gradient(45deg, #ffe0e0, transparent); display: block; position: absolute; transform: rotate(55deg); right: 0;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
+    
+    &:after { bottom: 36%; left: 0; right: inherit; transform: rotate(25deg); }
+    
+    .inwrap {
+        max-width: 700px; margin: 0 auto; 
+    }
+
+    @include mixins.minmedia(640px) {
+        .block { max-width: 460px; padding: 34px 0; }
+        .block:nth-child(2n) { margin-left: auto; text-align: right; 
+            &:before {
+                transform: rotate(93deg);
+            }
+        }
+    }
+
+    .block {
+        
+        &:before {
+        content: ''; display: inline-block;
+        height: 122px;
+        width: 122px;
+        background: url('../../images/heading-decore.svg') no-repeat;
+         margin: -70px;
+        background-size: contain;
+        }
+
+    }
+
+
+
+}

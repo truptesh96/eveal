@@ -1,7 +1,9 @@
+@use "mixins";
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /*-- Theme Variables --*/
-$wrapperWidth : 1370px;
+$wrapperWidth : 1660px;
 $bodyFonts : "Poppins", serif;
 $headingFonts : "Playfair Display", serif;
 $primaryColor: #f97a42;
@@ -107,7 +109,7 @@ button, .button { background: $primaryColor; color: #fff; min-width: 240px; text
 
 
 .plusIcon {
-  @include plusicon;
+  @include mixins.plusicon;
 }
 
 
@@ -155,7 +157,7 @@ $tagsList:
   ".font32" 26 1.32,
   ;
  
-@include typoSet($tagsList, 640px);
+@include mixins.typoSet($tagsList, 640px);
 
 // Small Desktop Fonts
 $tagsList:
@@ -168,7 +170,7 @@ $tagsList:
   "body" 18,
   ".font16" 16 1,
   ;
-@include typoSet($tagsList, 1280px);
+@include mixins.typoSet($tagsList, 1280px);
 
 // Desktop Fonts
 $tagsList:
@@ -182,20 +184,26 @@ $tagsList:
   ".font32" 32 1.32,
   ".font16" 16 1,
   ;
-@include typoSet($tagsList, 1480px);
+@include mixins.typoSet($tagsList, 1480px);
 
  
 /*-- Common Classes --*/
 .textCenter { text-align:center; }
 
-.wrap { max-width: calc($wrapperWidth + 36px); margin: 0 auto; padding : 0 18px; 
+.wrap { max-width: calc($wrapperWidth + 36px); margin: 0 auto; padding : 0 24px;
 
-  @include minmedia(768px) { 
+  @include mixins.minmedia(768px) { 
     &.leftPull, &.rightPull { max-width: calc(((100% - $wrapperWidth + 36px) / 2) + $wrapperWidth ); }
     &.rightPull { margin-right:0; padding-right:0 }
     &.leftPull { margin-left:0; padding-left:0; }
   }
 
+}
+
+.pageGrid { display: flex; justify-content: space-between; position: fixed; opacity: .5; z-index: -99999; top: 0;
+  left: 50%; height: 100%; width: 100%; max-width: calc($wrapperWidth - 8px); transform: translate(-50%);
+  .gapGrid, .gridLine { height: 100%; width: 1px; background: red; }
+  .gridLine { background: blue; }
 }
 
 .dflex { display: flex; flex-wrap: wrap; }
@@ -218,16 +226,16 @@ $tagsList:
   }
 }
 
-[class^="wid"] { max-width: 100%; width: 100%; }
+[class*="wid"] { max-width: 100%; width: 100%; }
 
-.wid50 { @include minmedia(768px) { max-width: 50%; } }
-.wid25 { @include minmedia(768px) { max-width: 25%; } }
-.wid33 { @include minmedia(768px) { max-width: 33.333%; } }
-.wid60 { @include minmedia(768px) { max-width: 60%; } }
-.wid40 { @include minmedia(768px) { max-width: 40%; } }
-.wid75 { @include minmedia(768px) { max-width: 75%; } }
-.wid30 { @include minmedia(768px) { max-width: 30%; } }
-.wid70 { @include minmedia(768px) { max-width: 70%; } }
+.wid50 { @include mixins.minmedia(768px) { max-width: 50%; } }
+.wid25 { @include mixins.minmedia(768px) { max-width: 25%; } }
+.wid33 { @include mixins.minmedia(768px) { max-width: 33.333%; } }
+.wid60 { @include mixins.minmedia(768px) { max-width: 60%; } }
+.wid40 { @include mixins.minmedia(768px) { max-width: 40%; } }
+.wid75 { @include mixins.minmedia(768px) { max-width: 75%; } }
+.wid30 { @include mixins.minmedia(768px) { max-width: 30%; } }
+.wid70 { @include mixins.minmedia(768px) { max-width: 70%; } }
 
 .mainHead {
   margin: 0 0 44px;
@@ -250,15 +258,15 @@ $tagsList:
 
 
   
-.hasBg { position: relative; }
-.hasOverlay { @include positionAbsolute; }
+.hasBg { position: relative; overflow: hidden; }
+.hasOverlay { @include mixins.positionAbsolute; }
 
 .bgItem {  
   
-  @include positionAbsolute; object-fit: cover;
+  @include mixins.positionAbsolute; object-fit: cover;
 
   img, video, iframe {
-    @include positionAbsolute;
+    @include mixins.positionAbsolute;
     object-fit: cover;
 
   }
@@ -278,10 +286,13 @@ $tagsList:
 }
 
 
+.landscape { aspect-ratio: 16/9; height: auto; }
+.square { aspect-ratio: 1/1; height: auto; }
+.portrait { aspect-ratio: 6/19; height: auto; }
 
 // Marque Element
 .marqueElem { overflow: hidden; max-width: 100vw;
-	.transText { position: relative;  @include transtext(1px, #000); font-family: "Poppins", serif; font-weight: 900; letter-spacing: 12px; }
+	.transText { position: relative;  @include mixins.transtext(1px, #000); font-family: "Poppins", serif; font-weight: 900; letter-spacing: 12px; }
 	.inner { flex-wrap: nowrap; white-space: nowrap; }
 	
   .tieTwo, .tieOne { animation: 60s linear infinite marqueeRight; }
@@ -289,3 +300,10 @@ $tagsList:
   &.toLeft { .tieTwo, .tieOne { animation: 60s linear infinite marquee; } }
 
 }
+
+
+.hasCrossbar { position: relative;
+    &:before { content: ''; height: 100%; background: var(--cross-bar-color); width: 100%; transform: skewY(-2deg); position: absolute;
+    top: -50px; left: 0; clip-path: none; }
+}
+

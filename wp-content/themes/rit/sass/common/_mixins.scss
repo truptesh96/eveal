@@ -1,5 +1,8 @@
 @mixin centerBlock { display: block; margin-left: auto; margin-right: auto; }
 
+@mixin minmedia($screen) {
+	@media (min-width: $screen) { @content; }
+}
 
 @mixin colset( $columns:2, $gap: 24 ) { 
     > .column { width: calc( ( 100% - ( #{$columns} - 1 ) * #{$gap}px  ) / #{$columns} ); }
@@ -25,9 +28,7 @@
 	}
 }
 
-@mixin minmedia($screen) {
-	@media (min-width: $screen) { @content; }
-}
+
 
 
  @mixin positionAbsolute($top: 0, $left: 0, $height: 100%, $width: 100%) {

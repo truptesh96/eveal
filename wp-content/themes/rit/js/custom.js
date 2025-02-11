@@ -40,8 +40,7 @@ jQuery(function($){
             }
         });
     }
-
-
+ 
     // Slider
 	function sliderInit() {
 		$('.slickSlides:not(.slickSlides.slick-initialized)').each(function(){
@@ -86,15 +85,7 @@ jQuery(function($){
     }).on("mousemove", function(e) { $(this).children("img").css({ "transform-origin":((e.pageX - $(this).offset().left) / $(this).width()) * 100 + "% " + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 + "%" });
     });
 
-
-
-
-            
-
-
-
-
-
+ 
 });
 
 

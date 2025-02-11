@@ -4,15 +4,15 @@
 	$section_color_schema = get_sub_field('section_color_schema');
     $media_alignment = get_sub_field('media_alignment');
     $wrapper_width = get_sub_field('wrapper_width');
-    
+
 ?>
 <section class="mediaCont <?php echo $section_class.' '.$section_color_schema; ?>" id="<?php echo $section_id; ?>">
     <div class="wrap dflex <?php echo $wrapper_width.' ';  echo ( $media_alignment == 'rightAlign' ) ? ' reverse ' : ''; ?> ">
-        <div class="mediaWrap hasBg">
-            <?php get_template_part('template-parts/common-fields/get_media', false, array( 'class' => 'media bgItem' )); ?>
+        <div class="mediaWrap landscape hasBg wid40">
+            <?php get_template_part('template-parts/common-fields/get_media', false, array( 'class' => 'media bgItem')); ?>
         </div>
 
-        <div class="contWrap">
+        <div class="contWrap wid60">
             <?php get_template_part('template-parts/common-fields/get_headers'); ?>
             <?php get_template_part('template-parts/common-fields/get_buttons'); ?>
         </div>

@@ -1,6 +1,8 @@
+@use "../common/mixins";
+
 .heroBanner { 
 
-    @include minmedia(768px) {
+    @include mixins.minmedia(768px) {
         
     }
 

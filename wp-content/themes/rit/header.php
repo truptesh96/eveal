@@ -25,6 +25,12 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'rit' ); ?></a>
 
+	<div class="pageGrid">
+	<span class="gridLine"></span><span class="gridLine"></span><span class="gridLine"></span><span class="gridLine"></span>
+	<span class="gridLine"></span><span class="gridLine"></span><span class="gridLine"></span><span class="gridLine"></span> 
+	<span class="gridLine"></span><span class="gridLine"></span><span class="gridLine"></span><span class="gridLine"></span> 
+	</div>
+
 	<header id="masthead" class="site-header">
 		<div class="wrap dflex spaceBetween vCenter">
 		<div class="site-branding">
@@ -45,5 +51,6 @@
 		</nav><!-- #site-navigation -->
 		</div>
 	</header><!-- #masthead -->
-
+ 
 	
+	 

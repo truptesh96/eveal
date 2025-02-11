@@ -22,7 +22,9 @@
 	<?php while (have_rows('banner_slides')) { the_row(); ?>
 
 		<div class="slide hasBg">
-			<?php get_template_part('template-parts/common-fields/get_media', false, array( 'class' => 'bgItem zoomover' )); ?>
+			<?php $fetch_priority = get_row_index() == 1 ? "high" : "low"; ?>
+			<?php get_template_part('template-parts/common-fields/get_media', false, array( 'class' => 'bgItem zoomover', 'fetch_priority' => $fetch_priority )); ?>
+
 			<div class="contWrap z2">
 				<?php get_template_part('template-parts/common-fields/get_headers'); ?>
 				<?php get_template_part('template-parts/common-fields/get_buttons'); ?>

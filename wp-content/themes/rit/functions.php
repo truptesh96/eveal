@@ -139,6 +139,7 @@ add_action( 'widgets_init', 'rit_widgets_init' );
  */
 function rit_scripts() {
 	wp_enqueue_style( 'rit-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'rit-theme', get_template_directory_uri() . '/dest/css/style.min.css');
 	wp_style_add_data( 'rit-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'jquery' );
@@ -248,10 +249,236 @@ function add_first_and_second_images_to_product_loop() {
 }
 
 
+function enqueue_acf_flex_assets() {
+    if ( ! function_exists( 'get_field' ) ) { return; }
+    global $post;
+    if ( have_rows( 'flexible_content', $post->ID ) ) {
+        while ( have_rows( 'flexible_content', $post->ID ) ) {
+           the_row();
+           $layout = get_row_layout();
+           $js_file = get_template_directory_uri() . "/js/flex/{$layout}.js";
+			if ( file_exists( $js_file ) ) { wp_enqueue_script( "acf-{$layout}",  $js_file ); }
+        }
+    }
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_acf_flex_assets' );
 
 
 
+add_filter('gform_webhooks_request_data', 'transform_gravity_forms_payload', 10, 4);
+
+function transform_gravity_forms_payload($request_data, $feed, $entry, $form) {
+    // Convert current format to target format
+    $lead_data =  $request_data;
+
+    // Wrap the lead data in the "Lead" array
+    $target_format = array(
+        "Lead" => array($lead_data)
+    );
+
+    return $target_format;
+}
+
+
+// Register Custom Post Type: Experiences
+function register_experiences_post_type() {
+    $labels = array(
+        'name'               => _x('Experiences', 'post type general name', 'my-custom-plugin'),
+        'singular_name'      => _x('Experience', 'post type singular name', 'my-custom-plugin'),
+        'menu_name'          => __('Experiences', 'my-custom-plugin'),
+        'name_admin_bar'     => __('Experience', 'my-custom-plugin'),
+        'add_new'            => __('Add New', 'my-custom-plugin'),
+        'add_new_item'       => __('Add New Experience', 'my-custom-plugin'),
+        'new_item'           => __('New Experience', 'my-custom-plugin'),
+        'edit_item'          => __('Edit Experience', 'my-custom-plugin'),
+        'view_item'          => __('View Experience', 'my-custom-plugin'),
+        'all_items'          => __('All Experiences', 'my-custom-plugin'),
+        'search_items'       => __('Search Experiences', 'my-custom-plugin'),
+        'not_found'          => __('No experiences found.', 'my-custom-plugin'),
+        'not_found_in_trash' => __('No experiences found in Trash.', 'my-custom-plugin'),
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array('slug' => 'experiences'),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => 5,
+        'supports'           => array('title', 'thumbnail', 'excerpt'),
+    );
+
+    register_post_type('experiences', $args);
+}
+add_action('init', 'register_experiences_post_type');
+
+// Register Taxonomies: Locations and Ratings
+function register_experience_taxonomies() {
+    // Locations (Hierarchical)
+    $location_labels = array(
+        'name'              => _x('Locations', 'taxonomy general name', 'my-custom-plugin'),
+        'singular_name'     => _x('Location', 'taxonomy singular name', 'my-custom-plugin'),
+        'search_items'      => __('Search Locations', 'my-custom-plugin'),
+        'all_items'         => __('All Locations', 'my-custom-plugin'),
+        'parent_item'       => __('Parent Location', 'my-custom-plugin'),
+        'parent_item_colon' => __('Parent Location:', 'my-custom-plugin'),
+        'edit_item'         => __('Edit Location', 'my-custom-plugin'),
+        'update_item'       => __('Update Location', 'my-custom-plugin'),
+        'add_new_item'      => __('Add New Location', 'my-custom-plugin'),
+        'new_item_name'     => __('New Location Name', 'my-custom-plugin'),
+        'menu_name'         => __('Locations', 'my-custom-plugin'),
+    );
+
+    $location_args = array(
+        'hierarchical'      => true,
+        'labels'            => $location_labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'location'),
+    );
+
+    register_taxonomy('location', 'experiences', $location_args);
+
+    // Ratings (Non-Hierarchical)
+    $rating_labels = array(
+        'name'              => _x('Ratings', 'taxonomy general name', 'my-custom-plugin'),
+        'singular_name'     => _x('Rating', 'taxonomy singular name', 'my-custom-plugin'),
+        'search_items'      => __('Search Ratings', 'my-custom-plugin'),
+        'all_items'         => __('All Ratings', 'my-custom-plugin'),
+        'edit_item'         => __('Edit Rating', 'my-custom-plugin'),
+        'update_item'       => __('Update Rating', 'my-custom-plugin'),
+        'add_new_item'      => __('Add New Rating', 'my-custom-plugin'),
+        'new_item_name'     => __('New Rating Name', 'my-custom-plugin'),
+        'menu_name'         => __('Ratings', 'my-custom-plugin'),
+    );
+
+    $rating_args = array(
+        'hierarchical'      => true,
+        'labels'            => $rating_labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'rating'),
+    );
+
+    register_taxonomy('rating', 'experiences', $rating_args);
+}
+add_action('init', 'register_experience_taxonomies');
 
 
 
- 
+function update_assigned_hotels_meta($post_id) {
+    // Ensure this runs only for 'experiences' post type
+    if (get_post_type($post_id) !== 'experiences') {
+        return;
+    }
+
+    // Define the taxonomy where post IDs should be stored
+    $taxonomy = 'location'; // Replace with your actual taxonomy slug
+    $meta_key = 'assigned_hotels'; // Meta key to store post IDs
+
+    // Get the terms assigned to this post
+    $terms = wp_get_post_terms($post_id, $taxonomy, array('fields' => 'ids'));
+
+    if (!empty($terms) && !is_wp_error($terms)) {
+        foreach ($terms as $term_id) {
+            // Get existing assigned post IDs
+            $existing_posts = get_term_meta($term_id, $meta_key, true);
+
+            if (!is_array($existing_posts)) {
+                $existing_posts = [];
+            }
+
+            // Add the new post ID if it's not already assigned
+            if (!in_array($post_id, $existing_posts)) {
+                $existing_posts[] = $post_id;
+                update_term_meta($term_id, $meta_key, $existing_posts);
+            }
+        }
+    }
+}
+add_action('save_post_experiences', 'update_assigned_hotels_meta');
+
+
+function experiences_data_admin_menu() {
+    add_menu_page(
+        'Experiences Data',  // Page title
+        'Experiences Data',  // Menu title
+        'manage_options',    // Capability
+        'experiences_data',  // Menu slug
+        'render_experiences_data_page', // Callback function
+        'dashicons-admin-site', // Icon
+        20 // Position in menu
+    );
+}
+add_action('admin_menu', 'experiences_data_admin_menu');
+
+function render_experiences_data_page() {
+    $location_taxonomy = 'location'; // Taxonomy for locations
+    $meta_key = 'assigned_hotels'; // Meta key storing assigned Experience post IDs
+
+    // Get all locations
+    $locations = get_terms(array(
+        'taxonomy' => $location_taxonomy,
+        'hide_empty' => false
+    ));
+
+    echo '<div class="wrap">';
+    echo '<h1>Experiences Data</h1>';
+    echo '<div class="experiences-data-wrapper">';
+
+    if (!empty($locations) && !is_wp_error($locations)) {
+        foreach ($locations as $location) {
+            echo '<div class="experience-item">';
+            echo '<h2 class="location-title">' . esc_html($location->name) . '</h2>';
+
+            // Retrieve experience IDs stored in the term meta
+            $experience_ids = get_term_meta($location->term_id, $meta_key, true);
+
+            echo '<div class="experience-section">';
+
+            if (!empty($experience_ids) && is_array($experience_ids)) {
+                $experiences = get_posts(array(
+                    'post_type' => 'experiences',
+                    'post__in' => array_unique($experience_ids),
+                    'posts_per_page' => -1
+                ));
+
+                if (!empty($experiences)) {
+                    echo '<ul class="experience-list">';
+                    foreach ($experiences as $exp) {
+                        echo '<li>' . $exp->post_title.' <a href="'.get_permalink($exp->ID).'">'. $exp->ID . '</a></li>';
+                    }
+                    echo '</ul>';
+                } else {
+                    echo '<p>No Experiences Found</p>';
+                }
+            } else {
+                echo '<p>No Experiences Assigned</p>';
+            }
+
+            echo '</div>'; // Close experience-section
+            echo '</div>'; // Close experience-item
+        }
+    } else {
+        echo '<p>No Locations Found</p>';
+    }
+
+    echo '</div>'; // Close experiences-data-wrapper
+    echo '</div>'; // Close wrap
+
+    // Inline CSS for styling (can be moved to a separate admin stylesheet)
+    echo '<style>
+        .experiences-data-wrapper { display: flex; flex-wrap: wrap; gap: 20px; }
+        .experience-item { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 100%; max-width: 500px; }
+        .location-title { font-size: 20px; margin-bottom: 10px; }
+        .experience-section { margin-top: 15px; }
+        .experience-list { list-style: disc; margin-left: 20px; }
+    </style>';
+}

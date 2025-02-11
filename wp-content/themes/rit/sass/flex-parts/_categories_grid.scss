@@ -1,12 +1,14 @@
+@use "../common/mixins";
+
 .catWrap {
 
-    @include minmedia(768px) {
-        @include colset(3,24); 
+    @include mixins.minmedia(768px) {
+        @include mixins.colset(3,24); 
     }
 
 
-    @include minmedia(1024px) {
-        @include colset(3,32); 
+    @include mixins.minmedia(1024px) {
+        @include mixins.colset(3,32); 
     }
 
 }
@@ -16,9 +18,7 @@
     position: relative; overflow: hidden;
 
     .anim.in {
-        a {
-            &:before { opacity: 1; }
-        }
+        &:before { opacity: 1; }
     }
 
     a {
@@ -35,7 +35,7 @@
         }
     }
    
-    @include minmedia(768px) {
+    @include mixins.minmedia(768px) {
      
         margin: 90px 0 0;
         &:nth-child(3n - 1) {
@@ -49,22 +49,5 @@
 
 
 
-.usp { position: relative; overflow: hidden;
 
-    &:before, &:after { content: ''; height: 460px; width: 460px; background: linear-gradient(45deg, #ffe0e0, transparent); display: block; position: absolute; transform: rotate(55deg); right: 0;
-    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); }
-    
-    &:after { bottom: 36%; left: 0; right: inherit; transform: rotate(25deg); }
-    
-    .inwrap {
-        max-width: 700px; margin: 0 auto; 
-    }
-
-    @include minmedia(640px) {
-        .block { max-width: 460px; padding: 34px 0; }
-        .block:nth-child(2n) { margin-left: auto; text-align: right; }
-    }
-
-
-}
 

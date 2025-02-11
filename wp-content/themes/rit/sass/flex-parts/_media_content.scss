@@ -1,28 +1,35 @@
+@use "../common/mixins";
+
 .mediaCont {
 
+  .mediaWrap {
+    margin: 0 0 42px;
+  }
+  
 
-  @include minmedia(768px) {
+  @include mixins.minmedia(768px) {
+    
     .mediaWrap {
-        height: 500px; width: 450px;
+      margin: 0;
     }
 
     .contWrap {
-        max-width: calc(100% - 450px); padding-left: 44px;
+      padding-left: max(44px, 8%);
     }
 
     .reverse {
       .contWrap {
-        padding-left: 0; padding-right: 44px;
+        padding-left: 0; padding-right: max(44px, 8%);
       }
 
       &.leftPull {
-        padding-left: 44px;
+        padding-left: max(44px, 8%);
       }
     }
 
     .rightPull {
       .contWrap {
-        padding-right: 44px;
+        padding-right: max(44px, 8%);
       }
     }
 

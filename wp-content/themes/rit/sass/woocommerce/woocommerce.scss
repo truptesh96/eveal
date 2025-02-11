@@ -1,6 +1,9 @@
+@use "../common/mixins";
+@use "../common/reset";
+
 /*-- General Woocommerce --*/
 .woocommerce, .woocommerce-page {
-	.site-main { max-width: $wrapperWidth; width: 100%; margin: 0 auto; }
+	.site-main { max-width: reset.$wrapperWidth; width: 100%; margin: 0 auto; }
 	li { list-style: none; }
 	button, .button { min-width: inherit; }
 	#secondary { display: none; }
@@ -21,7 +24,7 @@
 /*-- Woocommerce Shop Page --*/
 .products { display: flex; padding: 0; flex-wrap: wrap;
 
-	@include minmedia(768px) { 
+	@include mixins.minmedia(768px) { 
 		gap: 32px;
 	}
 
@@ -73,7 +76,7 @@ del bdi {
 	}
 
 	.hover-image {
-		@include positionAbsolute; z-index: 1; opacity: 0; transition: 0.65s ease;
+		@include mixins.positionAbsolute; z-index: 1; opacity: 0; transition: 0.65s ease;
 	}
 
 	
@@ -113,11 +116,11 @@ del bdi {
 
 .columns-4 {
 	.product {
-		@include minmedia(768px) {
+		@include mixins.minmedia(768px) {
 			max-width: 50%; width: 100%;
 		}
 
-		@include minmedia(1280px) {
+		@include mixins.minmedia(1280px) {
 			max-width: 25%;
 		}
 	}
@@ -172,13 +175,13 @@ del bdi {
 	.product {
 		position: relative;
 
-		@include minmedia(991px) {
+		@include mixins.minmedia(991px) {
 			display: flex; flex-wrap: wrap;  
 		}
 	}
 
 	.tabs { width: 300px;
-		@include minmedia(991px) {
+		@include mixins.minmedia(991px) {
 			position: sticky; top: 60px; left: 0;
 		}
 	}
@@ -190,7 +193,7 @@ del bdi {
 
 .woocommerce-product-gallery { position: relative; width: 100%;
 	
-	@include minmedia(991px) {
+	@include mixins.minmedia(991px) {
 		max-width: 600px; margin-right: 32px;
 	}
 	
@@ -198,7 +201,7 @@ del bdi {
 
 .summary { width: 100%;
 	
-	@include minmedia(991px) {
+	@include mixins.minmedia(991px) {
 		max-width: calc(100% - 632px); 
 	}
 }
@@ -231,7 +234,7 @@ del bdi {
 .woocommerce-account{
 	.entry-content > .woocommerce {
 	
-		@include minmedia(768px) {
+		@include mixins.minmedia(768px) {
 			display: grid; align-items: flex-start; gap: 32px; grid-template-columns: 220px 1fr; margin: 44px 0 0;
 		}
 	}
