@@ -1,0 +1,86 @@
+{
+    "key": "group_64eca1999a233",
+    "title": "SEO Settings",
+    "fields": [
+        {
+            "key": "field_64eca19a6db2c",
+            "label": "Head",
+            "name": "seo_head",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "These scripts will be printed in the section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_64eca1f16db2d",
+            "label": "Body",
+            "name": "seo_body",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "These scripts will be printed in the section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_64eca1fa6db2e",
+            "label": "Footer",
+            "name": "seo_footer",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "These scripts will be printed in the section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1764320533
+}

@@ -1,0 +1,5 @@
+
+#sec_1{--pt:600px;}
+#sec_2{--pt:60px;}
+@media (min-width: 768px) { #sec_2{--pt:80px;} }
+@media (min-width: 1200px) { #sec_2{--pt:100px;} }
