@@ -1,0 +1,12 @@
+@mixin minmedia($screen) {
+  @media (min-width: map-get($breakpoints, $screen)) {
+    @content;
+  }
+}
+
+@mixin maxmedia($screen) {
+  @media (max-width: calc(map-get($breakpoints, $screen) - 1px)) {
+    @content;
+  }
+}
+

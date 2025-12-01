@@ -1,0 +1,54 @@
+@import './base/base';
+
+.o-section {
+    padding: var(--pt) var(--px, 22px) var(--pb);
+}
+
+.o-flex {
+    display: flex;
+    flex-wrap: var(--wrap, wrap);
+    flex-direction: var(--direction, row);
+    justify-content: var(--justify, flex-start);
+    align-items: var(--align, stretch);
+    column-gap: var(--gapx, 0);
+    row-gap: var(--gapy, 0);
+
+    &.is-column {
+        --direction: column;
+    }
+
+    &.is-row {
+        --direction: row;
+    }
+
+    &.is-center {
+        --justify: center;
+        --align: center;
+    }
+
+    &.align-center {
+        --align: center;
+    }
+
+    &.justify-center {
+        --justify: center;
+    }
+
+}
+
+.u-hide {
+    display: none;
+}
+
+.u-sm-hide {
+    @include maxmedia(md) {
+        display: none;
+    }
+}
+
+.u-md-hide {
+    @include minmedia(md) {
+        display: none;
+    }
+}
+

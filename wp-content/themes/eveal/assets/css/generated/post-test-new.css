@@ -1,12 +1,4 @@
 
-/* Block: banner */
-.banner{background:blue;height:100vh}/*# sourceMappingURL=banner.css.map */
-
-
-/* Block: page_heading */
-.head{font-size:24px}/*# sourceMappingURL=page_heading.css.map */
-
-
-#sec_1{--pt:20px;}
-@media (min-width: 768px) { #sec_1{--pt:40px;} }
-@media (min-width: 1200px) { #sec_1{--pt:60px;} }
+#hero-sec{--bg-color:rgb(130,130,130);--color:rgb(226,226,226);--pt:20px;}
+@media (min-width: 768px) { #hero-sec{--pt:40px;--pb:90px;} }
+@media (min-width: 1600px) { #hero-sec{--pt:60px;} }

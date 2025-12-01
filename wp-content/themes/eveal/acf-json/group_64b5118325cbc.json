@@ -228,29 +228,6 @@
             "append": ""
         },
         {
-            "key": "field_68458c973d375",
-            "label": "Section Padding Top Big Desktop",
-            "name": "sec_top_big_desktop",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "25",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_68458c393d372",
             "label": "Section Padding Bottom Mobile",
             "name": "sec_btm_mobile",
@@ -318,29 +295,6 @@
             "step": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_68458ce33d379",
-            "label": "Section Padding Bottom Big Desktop",
-            "name": "sec_btm_big_desktop",
-            "aria-label": "",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "25",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "min": "",
-            "max": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "step": "",
-            "prepend": "",
-            "append": ""
         }
     ],
     "location": [
@@ -362,5 +316,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764320525
+    "modified": 1764580866
 }

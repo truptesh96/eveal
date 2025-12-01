@@ -1,0 +1,256 @@
+@import 'settings';
+@import 'functions';
+
+
+:root {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+html {
+  font-size: 16px;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+::backdrop {
+  background-color: transparent;
+}
+
+dialog {
+  width: 100%;
+  visibility: hidden;
+  height: 100dvh;
+  overflow: hidden;
+  margin: 0;
+  max-width: inherit;
+  max-height: inherit;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: auto;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+  background: transparent;
+  transition: var(--tr-ease) var(--tr-speed) visibility;
+
+  &:before {
+    content: '';
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    mix-blend-mode: multiply;
+    opacity: 0;
+    transition: var(--tr-ease) var(--tr-speed) opacity;
+
+  }
+}
+
+@include minmedia(md) {
+  dialog {
+    transition-delay: var(--tr-speed);
+
+    &:before {
+      background-color: color-mix(in srgb, var(--clr-black) 80%, transparent 20%);
+      transition-delay: 0.75s;
+    }
+  }
+}
+
+dialog[open] {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+dialog[open]::before {
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+svg {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  fill: var(--fill, var(--color));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+// ❇ Base width for fluid font calculation
+$fluid-base: 960;
+
+// Mixin that outputs clamp()
+@mixin fluid-font($min, $max) {
+  $vw-value: (($max - $min) * 100 / $fluid-base) * 1vw;
+  font-size: clamp(
+    #{$min}px,
+    #{$vw-value},
+    #{$max}px
+  );
+}
+
+// Generate classes from map
+@each $selector, $sizes in $font-sizes {
+  $min: nth($sizes, 1);
+  $max: nth($sizes, 2);
+
+  #{$selector} {
+    @include fluid-font($min, $max);
+  }
+}
+
+// Aspect Ratio Utilities
+// Usage: add class .ar-<name> to element
+@each $name, $ratio in $aspectratios {
+  .ar-#{$name} {
+    aspect-ratio: #{$ratio};
+  }
+}
+
+// Color Utilities
+// Usage: add class .bg-<name> or .clr-<name> to
+// element for background-color or color respectively
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background-color: #{$color};
+  }
+
+  .clr-#{$name} {
+    color: #{$color};
+  }
+}
+

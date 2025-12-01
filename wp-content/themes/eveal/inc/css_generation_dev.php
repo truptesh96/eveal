@@ -47,8 +47,7 @@ function generate_post_css_file($post_id) {
             $sections[$section_id] = [
                 'base'   => [],
                 '768px'  => [],
-                '1200px' => [],
-                '1400px' => [],
+                '1600px' => [],
             ];
 
             // Base
@@ -83,11 +82,11 @@ function generate_post_css_file($post_id) {
 
             // Desktop
             if ($has_value($pt = get_sub_field('sec_top_desktop'))) {
-                $sections[$section_id]['1200px'][] = "--pt:{$pt}px;";
+                $sections[$section_id]['1600px'][] = "--pt:{$pt}px;";
             }
 
             if ($has_value($pb = get_sub_field('sec_btm_desktop'))) {
-                $sections[$section_id]['1200px'][] = "--pb:{$pb}px;";
+                $sections[$section_id]['1600px'][] = "--pb:{$pb}px;";
             }
         }
     }
@@ -103,7 +102,7 @@ function generate_post_css_file($post_id) {
             $css .= "#{$id}{" . implode('', $rules['base']) . "}\n";
         }
 
-        foreach (['768px','1200px','1400px'] as $bp) {
+        foreach (['768px','1600px'] as $bp) {
             if (!empty($rules[$bp])) {
                 $css .= "@media (min-width: {$bp}) { #{$id}{" . implode('', $rules[$bp]) . "} }\n";
             }
