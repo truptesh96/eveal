@@ -1,4 +1,13 @@
 <?php
+/**
+ * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 if ( ! class_exists( 'acf_pro' ) ) :
 
@@ -18,7 +27,7 @@ if ( ! class_exists( 'acf_pro' ) ) :
 
 			// update setting
 			acf_update_setting( 'pro', true );
-			acf_update_setting( 'name', __( 'Advanced Custom Fields PRO', 'acf' ) );
+			acf_update_setting( 'name', 'Advanced Custom Fields PRO' );
 
 			// includes
 			acf_include( 'pro/blocks.php' );
@@ -33,6 +42,8 @@ if ( ! class_exists( 'acf_pro' ) ) :
 
 			// actions
 			add_action( 'init', array( $this, 'register_assets' ) );
+			add_action( 'acf/init', array( $this, 'update_plugin_name' ) );
+			add_action( 'woocommerce_init', array( $this, 'init_hpos_integration' ), 99 );
 			add_action( 'acf/init_internal_post_types', array( $this, 'register_ui_options_pages' ) );
 			add_action( 'acf/include_fields', array( $this, 'include_options_pages' ) );
 			add_action( 'acf/include_field_types', array( $this, 'include_field_types' ), 5 );
@@ -47,6 +58,29 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			add_filter( 'posts_where', array( $this, 'posts_where' ), 10, 2 );
 			add_filter( 'acf/internal_post_type/admin_body_classes', array( $this, 'admin_body_classes' ) );
 			add_filter( 'acf/internal_post_type_list/admin_body_classes', array( $this, 'admin_body_classes' ) );
+		}
+
+		/**
+		 * Updates the plugin name to make it translatable.
+		 *
+		 * @since 6.4
+		 *
+		 * @return void
+		 */
+		public function update_plugin_name() {
+			acf_update_setting( 'name', __( 'Advanced Custom Fields PRO', 'acf' ) );
+		}
+
+		/**
+		 * Initializes the ACF WooCommerce HPOS integration.
+		 *
+		 * @since 6.4
+		 *
+		 * @return void
+		 */
+		public function init_hpos_integration() {
+			acf_new_instance( 'ACF\Pro\Meta\WooOrder' );
+			acf_new_instance( 'ACF\Pro\Forms\WC_Order' );
 		}
 
 		/**
