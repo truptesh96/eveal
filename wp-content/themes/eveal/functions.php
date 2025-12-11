@@ -139,22 +139,32 @@ add_action( 'widgets_init', 'eveal_widgets_init' );
  * Enqueue scripts and styles.
  */
 function eveal_scripts() {
-	wp_enqueue_style( 'eveal-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'eveal-style', 'rtl', 'replace' );
+    wp_enqueue_style('eveal-style', get_stylesheet_uri(), array(), _S_VERSION);
+    wp_style_add_data('eveal-style', 'rtl', 'replace');
 
-	wp_enqueue_script(
-		'eveal-theme',
-		get_template_directory_uri() . '/js/theme.js',
-		array('jquery'),
-		filemtime( get_template_directory() . '/js/theme.js' ),
-		true
-	);
+    wp_enqueue_script(
+        'eveal-theme',
+        get_template_directory_uri() . '/js/theme.js',
+        array(),
+        filemtime(get_template_directory() . '/js/theme.js'),
+        true
+    );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 }
-add_action( 'wp_enqueue_scripts', 'eveal_scripts' );
+add_action('wp_enqueue_scripts', 'eveal_scripts');
+
+
+// Force theme.js to be loaded as a module
+add_filter('script_loader_tag', function ($tag, $handle, $src) {
+    if ($handle === 'eveal-theme') {
+        return '<script type="module" src="' . esc_url($src) . '"></script>';
+    }
+    return $tag;
+}, 10, 3);
+
 
 /**
  * Implement the Custom Header feature.

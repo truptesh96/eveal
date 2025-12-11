@@ -1,5 +1,7 @@
 
-#sec_1{--pt:600px;}
-#sec_2{--pt:60px;}
-@media (min-width: 768px) { #sec_2{--pt:80px;} }
-@media (min-width: 1600px) { #sec_2{--pt:100px;} }
+#dsd{--color:rgb(221,51,51);--pt:600px;--pb:80px;}
+@media (min-width: 768px) { #dsd{--pt:90px;--pb:804px;} }
+@media (min-width: 1600px) { #dsd{--pt:900px;--pb:804px;} }
+#da{--color:rgb(238,238,34);--pt:60px;--pb:4324324px;}
+@media (min-width: 768px) { #da{--pt:80px;--pb:4423px;} }
+@media (min-width: 1600px) { #da{--pt:100px;--pb:4234px;} }

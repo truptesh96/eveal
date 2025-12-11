@@ -1115,37 +1115,10 @@
                                 "id": ""
                             },
                             "choices": {
-                                "textCenter": "Center Align",
-                                "textLeft": "Left Align"
+                                "u-text-center": "Center Align",
+                                "u-text-left": "Left Align"
                             },
                             "default_value": "",
-                            "return_format": "value",
-                            "allow_null": 0,
-                            "other_choice": 0,
-                            "allow_in_bindings": 0,
-                            "layout": "horizontal",
-                            "save_other_choice": 0
-                        },
-                        {
-                            "key": "field_68b1afff546b5",
-                            "label": "Fonts Style",
-                            "name": "fonts_style",
-                            "aria-label": "",
-                            "type": "radio",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "font18": "Small",
-                                "font22": "Medium",
-                                "font28": "Large"
-                            },
-                            "default_value": "font22",
                             "return_format": "value",
                             "allow_null": 0,
                             "other_choice": 0,
@@ -1660,5 +1633,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764581287
+    "modified": 1764669222
 }
