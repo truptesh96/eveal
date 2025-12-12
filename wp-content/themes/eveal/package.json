@@ -17,10 +17,18 @@
     "url": "https://github.com/Automattic/_s/issues"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^19.2.2",
+    "@wordpress/scripts": "^30.20.0",
     "dir-archiver": "^1.1.1",
-    "node-sass": "^7.0.1",
-    "rtlcss": "^3.5.0"
+    "gulp": "^5.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "rtlcss": "^3.5.0",
+    "sass": "^1.69.5",
+    "stylelint": "^15.0.0",
+    "stylelint-config-standard": "^34.0.0"
   },
   "rtlcssConfig": {
     "options": {
@@ -36,8 +44,9 @@
     "map": false
   },
   "scripts": {
-    "watch": "node-sass sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
-    "compile:css": "node-sass sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "compile:css": "sass sass/:./ --no-source-map --style=expanded",
     "compile:rtl": "rtlcss style.css style-rtl.css",
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
     "lint:js": "wp-scripts lint-js 'js/*.js'",

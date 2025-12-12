@@ -1,0 +1,198 @@
+/*-- Reset Browser --*/
+:focus, :focus-visible { outline: none !important; }
+img { max-width:100%; width:100%; height:auto; }
+body { font-family: $bodyFonts; margin:0; padding:0; font-weight: normal;
+  &.noscroll { overflow:hidden; }  
+}
+
+.zoomover { overflow: hidden; }
+
+.bodyFonts { font-family: $bodyFonts; font-weight: normal; font-style: normal; }
+.headFonts { font-family: $headingFonts; font-weight: normal; font-style: normal; }
+a, button, section, b, div, input, section, select, span, textarea { box-sizing: border-box; }
+input, form, select, textarea { max-width:100%; width:100%; }
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: $headingFonts; margin: 0; font-weight: normal; }
+
+
+a { text-decoration: none; word-wrap: break-word; max-width: 100%; }
+
+svg { max-width: 100%; max-height: 100%; width: 100%; height: auto; transition: 0.5s ease; }
+
+span, a, img { display: inline-block; }
+
+a { color: $primaryColor;  
+  &:has( > img:only-child) {
+    display: block; font-size: 0;
+  }
+
+}
+
+table { max-width: 100%; width: 100%; border-collapse: collapse; }
+img { object-fit: cover; }
+
+input[type="reset"], input[type="submit"], .hasLink, button, a, select { cursor: pointer; transition: 0.25s ease; }
+button, select, input {  appearance: none; outline: none; }
+textarea { resize: none; height: 250px; }
+select, textarea, input { border: 1px solid #101010; font-size: 16px; font-family: $bodyFonts; }
+textarea, button, .button, input { padding: 12px 16px; }
+
+[type="radio"], [type="checkbox"] {
+  padding: 0;
+}
+
+.media, .hasBg, .imgZooWrap { font-size: 0; }
+.btnWrap { gap: 12px; margin: 24px 0; 
+  &:last-child { margin-bottom: 0; }
+}
+
+button, .button {  color: $primaryColor;
+  &:hover { opacity: 0.5; }
+}
+
+.darkSkin {
+  button, .button {
+    &.secondary { background: transparent; border-color: $primaryColor; color: $primaryColor; 
+      &:hover { color: #F3F1E5; background: $primaryColor; }
+    }
+  }
+}
+
+
+// .slick-slider { 
+//   display: flex; flex-wrap: wrap; column-gap: 50px; row-gap: 24px;
+//   .slick-list { order: -1; }
+
+// }
+
+.slick-arrow { font-size: 0; border: none; background: url(assets/imgs/left-chevron-icn.png) no-repeat center; height: 38px; width: 20px; background-size: contain; padding: 0;
+
+  &.slick-next { transform: rotate(180deg); }
+
+  &:hover {
+    filter: invert(47%) sepia(4%) saturate(2559%) hue-rotate(314deg) brightness(87%) contrast(78%); opacity: 1;
+  }
+  
+}
+
+
+@mixin rounded($size: 30px) {
+  height: $size; width: $size; border-radius: 50%; }
+
+.slick-dots { 
+  list-style: none; position: absolute; bottom: 50%; right: 30px; padding: 0; margin: 0; padding: 0; font-size: 0;
+ 
+  button { min-width: inherit; font-size: 0; padding: 0; transition: 0.75s ease;  border: 2px solid #f97a42; background: transparent;  @include rounded(22px); margin: 5px; 
+    &:hover { background: #f97a42; }
+  }
+
+  .slick-active {
+    button { background: #f97a42;  }
+  }
+
+}
+
+
+
+.plusIcon {
+  @includeplusicon;
+}
+
+.noScroll { overflow: hidden; }
+select { padding: 22px 48px 22px 22px; background: url('images/chev-down.svg') no-repeat; background-size: 22px; background-position: right 10px center; cursor: pointer;
+  option { background-color: #fff; color: #000 !important; }
+}
+
+section { padding: 80px 0; }
+.ptb0 { padding-top:0; padding-bottom:0; }
+
+
+/*------------------- Typography -----------------------*/
+$tagsList:
+  "h1, .h1" 36 1.27,
+  "h2, .h2" 30 1.25,
+  "h3, .h3" 26 1.33,
+  "h4, .h4" 24 1.36,
+  "h5, .h5" 22 1.6,
+  "h6, .h6" 19 1.36,
+  ".font13" 13.5 1.48,
+  ".font16" 15 1,
+  ".font17" 15 1.24,
+  ".font32" 22 1.32,
+  ".font28" 20 1.42, 
+  ".font47" 32 1.034,
+  ".font58" 32 1.034,
+  ".font57" 35 1.05, 
+  ".font24" 18 1.24,
+  ".font20" 18 1.35
+  ".font18, .font17, body" 16 1.35,
+  ;
+
+@each $name, $size, $lineHeight in $tagsList {
+  #{$name}{
+      font-size: #{ $size }px; line-height: #{ $lineHeight };
+    }   
+}
+
+
+// Tablet Fonts
+$tagsList:
+  "h1, .h1" 44 1.142,
+  "h2, .h2" 40 1.2,
+  "h3, .h3" 28 1.28,
+  "h4, .h4" 26 1.36,
+  "h5, .h5" 22 1.6,
+  "h6, .h6" 18 1.36,
+  
+  ".font16" 14 1,
+  ".font58" 38 1.034,
+  ".font57" 38 1.05, 
+  ".font32" 26 1.32,
+  ".font24" 20 1.24,
+  ;
+ 
+@includetypoSet($tagsList, 640px);
+
+// Small Desktop Fonts
+$tagsList:
+  "h1, .h1" 55 1.142,
+  "h2, .h2" 44 1.2,
+  "h3, .h3" 32 1.28,
+  "h4, .h4" 27 1.36,
+  "h5, .h5" 22 1.6,
+  "h6, .h6" 18 1.36,
+  ".font58" 48 1.034,
+  ".font57" 42 1.05, 
+  ".font24" 21 1.24,
+  ".font16" 16 1,
+  ;
+@includetypoSet($tagsList, 1280px);
+
+// Desktop Fonts
+$tagsList:
+  ".font32" 24 1.32,
+  ".font28" 22 1.42,
+  ".font58" 55 1.034,
+  ".font47" 34 1.034,
+  ".font57" 54 1.05, 
+  ".font24" 22 1.24,
+  "body"    17 1.36,
+  ".font20" 18 1.35
+  ;
+@includetypoSet($tagsList, 1400px);
+
+// Large Desktop Fonts
+$tagsList:
+  ".font32" 32 1.32,
+  ".font28" 28 1.42,
+  ".font58" 58 1.034,
+  ".font47" 47 1.034,
+  ".font57" 57 1.05, 
+  ".font20" 20 1.35,
+  ".font18" 18 1.35,
+  // ".font24" 24 1.24,
+  ".font17" 17 1.35,
+  ".font20" 20 1.35
+  ;
+@includetypoSet($tagsList, 1800px);
+
+ 

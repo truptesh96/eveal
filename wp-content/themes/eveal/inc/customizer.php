@@ -1,8 +1,8 @@
 <?php
 /**
- * Eveal Theme Customizer
+ * eveal Theme Customizer
  *
- * @package Eveal
+ * @package eveal
  */
 
 /**

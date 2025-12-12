@@ -1,12 +1,11 @@
 <?php
 /**
- * Eveal functions and definitions
+ * eveal functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package Eveal
+ * @package eveal
  */
-
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
@@ -24,7 +23,7 @@ function eveal_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
-		* If you're building a theme based on Eveal, use a find and replace
+		* If you're building a theme based on eveal, use a find and replace
 		* to change 'eveal' to the name of your theme in all the template files.
 		*/
 	load_theme_textdomain( 'eveal', get_template_directory() . '/languages' );
@@ -139,32 +138,19 @@ add_action( 'widgets_init', 'eveal_widgets_init' );
  * Enqueue scripts and styles.
  */
 function eveal_scripts() {
-    wp_enqueue_style('eveal-style', get_stylesheet_uri(), array(), _S_VERSION);
-    wp_style_add_data('eveal-style', 'rtl', 'replace');
+	wp_enqueue_style( 'eveal-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'eveal-theme', get_stylesheet_directory_uri()."/dest/theme.css", array(), _S_VERSION );
+    wp_enqueue_script('jquery');
 
-    wp_enqueue_script(
-        'eveal-theme',
-        get_template_directory_uri() . '/js/theme.js',
-        array(),
-        filemtime(get_template_directory() . '/js/theme.js'),
-        true
-    );
 
-    if (is_singular() && comments_open() && get_option('thread_comments')) {
-        wp_enqueue_script('comment-reply');
-    }
+	wp_style_add_data( 'eveal-style', 'rtl', 'replace' );
+	wp_enqueue_script( 'eveal-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
-add_action('wp_enqueue_scripts', 'eveal_scripts');
-
-
-// Force theme.js to be loaded as a module
-add_filter('script_loader_tag', function ($tag, $handle, $src) {
-    if ($handle === 'eveal-theme') {
-        return '<script type="module" src="' . esc_url($src) . '"></script>';
-    }
-    return $tag;
-}, 10, 3);
-
+add_action( 'wp_enqueue_scripts', 'eveal_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -193,316 +179,134 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-/*----------------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------
-Custom Functions
-----------------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------*/
 
 
-require get_template_directory() . '/inc/custom_functions.php';
-// For admin Use
-if ( is_user_logged_in() ) {
-	require get_template_directory() . '/inc/acf-sync.php';
-	require get_template_directory() . '/inc/custom_functions.php';
-}
+// Hook into post update or publish
+add_action('save_post', 'generate_post_css_file');
 
-// Theme Specific
-function enqueue_post_css() {
-	global $post;
-	// Check if $post is set and not null before accessing its properties
-	if ( isset( $post ) && is_object( $post ) ) {
-		$post_slug = $post->post_name;
-		$file_path = get_template_directory_uri(). '/assets/css/generated/post-' . $post_slug . '.css';
-		$file_url  = get_template_directory_uri() . '/assets/css/generated/post-' . $post_slug . '.css';
-		wp_enqueue_style( 'post-' . $post_slug, $file_url, array(), false );
-	}
-}
- 
-
-
-function auto_load_css() {
-
-    $css_dir      = get_stylesheet_directory() . '/assets/css/';
-    $merged_file  = $css_dir . 'allblocks.css';
-    $css_files    = glob($css_dir . '*.css');
-
-    $merged_output = "";
-
-    foreach ($css_files as $file) {
-        if (basename($file) === 'allblocks.css') {
-            continue; // avoid merging the output file again
-        }
-
-        $merged_output .= "/* " . basename($file) . " */\n";
-        $merged_output .= file_get_contents($file) . "\n\n";
-    }
-
-    // Write merged output to allblocks.css
-    file_put_contents($merged_file, $merged_output);
-
-    // Enqueue merged CSS file
-    wp_enqueue_style(
-        'allblocks',
-        get_stylesheet_directory_uri() . '/assets/css/allblocks.css',
-        [],
-        filemtime($merged_file)
-    );
-}
-
-
-if ( is_user_logged_in() ) {
-	require get_template_directory() . '/inc/css_generation_dev.php';
-}
-
-
-$dev_mode = get_option('my_dev_mode', 'off'); 
-if ( $dev_mode == 'on' ) {
-	add_action('wp_enqueue_scripts', 'auto_load_css');
-}
-add_action( 'wp_enqueue_scripts', 'enqueue_post_css' );
- 
-
-/*-------- Regenerate All CSS ------------*/
-
-add_action('admin_bar_menu', function($wp_admin_bar) {
-
-    if ( ! current_user_can('manage_options') ) {
+function generate_post_css_file($post_id) {
+    // Ensure it's not an auto-save or a revision
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
         return;
-    }
+    } 
+	
+    // Define the path to save the CSS file
+    $upload_dir = wp_upload_dir();
+    $css_dir = get_stylesheet_directory_uri(). '/gen-css/';
+    $css_file = $css_dir . 'post' . $post_id . '.css';
 
-    $dev_mode = get_option('my_dev_mode', 'off'); // Default OFF
-    $label    = ($dev_mode === 'on') ? 'Dev Mode: ON' : 'Dev Mode: OFF';
-    $toggle   = ($dev_mode === 'on') ? 'off' : 'on';
-
-    $wp_admin_bar->add_node([
-        'id'    => 'my-dev-mode-toggle',
-        'title' => $label,
-        'href'  => wp_nonce_url(admin_url('?toggle_dev_mode=' . $toggle), 'toggle_dev_mode'),
-        'meta'  => ['class' => 'my-dev-mode-toggle']
-    ]);
-
-}, 100);
-
-add_action('init', function() {
-
-    if ( ! isset($_GET['toggle_dev_mode']) ) {
-        return;
-    }
-
-    if ( ! current_user_can('manage_options') ) {
-        return;
-    }
-
-    check_admin_referer('toggle_dev_mode');
-
-    $new_val = ($_GET['toggle_dev_mode'] === 'on') ? 'on' : 'off';
-
-    update_option('my_dev_mode', $new_val);
-
-    wp_redirect(remove_query_arg(['toggle_dev_mode', '_wpnonce']));
-    exit;
-});
- 
-/**
- * Generate CSS for ALL posts & pages
- * and delete unused CSS files based on post-slug.css format
- */
-function cg_generate_all_pages_css() {
-
-    $css_dir = get_stylesheet_directory() . '/assets/css/generated/';
-
-    // Ensure directory exists
+    // Create the directory if it doesn't exist
     if (!file_exists($css_dir)) {
         wp_mkdir_p($css_dir);
     }
 
-    // Get all pages + posts
-    $posts = get_posts([
-        'post_type'      => ['page', 'post'],
-        'posts_per_page' => -1,
-        'post_status'    => 'publish',
-    ]);
+    // Start CSS output
+    $dynamic_css = "";
 
-    if (empty($posts)) {
-        return 0;
-    }
+    // Loop through ACF flexible content fields
+    if( have_rows('flexible_sections', $post_id) ):
+        while( have_rows('flexible_sections', $post_id) ): the_row();
+             
+            $section_id = 'section_' . get_row_index();
+			
 
-    /**
-     * 1. Generate CSS for each post
-     */
-    $valid_files = [];
+        endwhile;
+    endif;
+	
+	// minification of css
+	$dynamic_css = preg_replace('/\s+/', '', $dynamic_css);
 
-    foreach ($posts as $post) {
+    // Save the CSS content to the file
+    file_put_contents($css_file, $dynamic_css);
 
-        $slug = $post->post_name;
-
-        // expected file format
-        $filename = "post-{$slug}.css";
-
-        $valid_files[] = $filename;
-
-        // your generator function must also save as post-slug.css
-        generate_post_css_file($post->ID);
-    }
-
-    /**
-     * 2. Cleanup: remove any css file NOT in $valid_files
-     */
-    $all_css_files = glob($css_dir . '*.css');
-
-    if (!empty($all_css_files)) {
-        foreach ($all_css_files as $file_path) {
-
-            $basename = basename($file_path);
-
-            // If not in valid list → delete
-            if (!in_array($basename, $valid_files, true)) {
-                unlink($file_path);
-            }
-        }
-    }
-
-    return count($posts);
 }
 
+// Enqueue the dynamically generated CSS for a specific post
+add_action('wp_enqueue_scripts', 'enqueue_post_css');
 
-/**
- * Add Regenerate Button to WP Admin Bar
- */
-add_action('admin_bar_menu', 'cg_register_adminbar_button', 100);
-function cg_register_adminbar_button($admin_bar) {
+function enqueue_post_css() {
+   
+	global $post;
+	$post_id = $post->ID;
+	$upload_dir = wp_upload_dir();
+	$css_file_url = get_stylesheet_directory_uri(). '/gen-css/post' . $post_id . '.css';
 
-    if (!current_user_can('manage_options')) {
-        return;
-    }
-
-    $nonce = wp_create_nonce('cg-generate-css');
-
-    $link = add_query_arg(
-        [
-            'cg_generate_all_css' => 1,
-            'cg_nonce'            => $nonce,
-        ],
-        admin_url()
-    );
-
-    $admin_bar->add_node([
-        'id'    => 'cg-regenerate-css',
-        'title' => __('Regenerate CSS', 'cg'),
-        'href'  => $link,
-        'meta'  => [
-            'title' => __('Generate CSS for all posts and pages', 'cg'),
-        ],
-    ]);
+	// Only enqueue if the CSS file exists
+	if (file_exists($upload_dir['basedir'] . '/assets/css/post' . $post_id . '.css')) {
+		wp_enqueue_style('post' . $post_id, $css_file_url);
+		// wp_enqueue_style('page' . $post_id, $css_file_url);
+	}
+   
 }
-
-
-/**
- * Handle CSS regeneration and show notice
- */
-add_action('admin_init', 'cg_process_css_regeneration');
-function cg_process_css_regeneration() {
-
-    if (!isset($_GET['cg_generate_all_css'])) {
-        return;
-    }
-
-    if (!current_user_can('manage_options')) {
-        wp_die(__('You do not have permission to do this.', 'cg'));
-    }
-
-    if (!isset($_GET['cg_nonce']) || !wp_verify_nonce($_GET['cg_nonce'], 'cg-generate-css')) {
-        wp_die(__('Invalid request. Nonce verification failed.', 'cg'));
-    }
-
-    // Generate CSS + cleanup
-    $count = cg_generate_all_pages_css();
-
-    set_transient('cg_css_regen_count', $count, 30);
-
-    wp_safe_redirect(remove_query_arg(['cg_generate_all_css', 'cg_nonce']));
-    exit;
-}
-
-
-/**
- * Show Admin Notice
- */
-add_action('admin_notices', 'cg_css_regen_notice');
-function cg_css_regen_notice() {
-
-    $count = get_transient('cg_css_regen_count');
-
-    if ($count === false) {
-        return;
-    }
-
-    delete_transient('cg_css_regen_count');
-
-    echo '<div class="notice notice-success is-dismissible">
-            <p><strong>CSS regenerated for ' . intval($count) . ' posts/pages.</strong><br>
-            Unused CSS files were cleaned up.</p>
-          </div>';
-}
-
-
-/*-------- Regenerate All CSS Ends ------------*/
-
-/**
-*  ACF Option pages
-**/
-add_action('init', 'register_acf_options_pages');
-function register_acf_options_pages() {
-    if( function_exists('acf_add_options_page') ) {
-        acf_add_options_page(array(
-            'page_title'    => 'Theme General Settings',
-            'menu_title'    => 'Theme Settings',
-            'menu_slug'     => 'theme-general-settings',
-            'capability'    => 'edit_posts',
-            'redirect'      => false
-        ));
-        
-        acf_add_options_sub_page(array(
-            'page_title'    => 'Theme Header Settings',
-            'menu_title'    => 'Header',
-            'parent_slug'   => 'theme-general-settings',
-        ));
-
-        acf_add_options_sub_page(array(
-            'page_title'    => 'Theme Footer Settings',
-            'menu_title'    => 'Footer',
-            'parent_slug'   => 'theme-general-settings',
-        ));
-    }
-}
-
-// Removing Unwanted defualt Wordpress style and JS
-add_action( 'wp_enqueue_scripts', function() {
-	wp_dequeue_style( 'global-styles-inline-css' );
-    wp_dequeue_style( 'classic-theme-styles' ); 
-    wp_dequeue_style( 'wp-block-library' );
-	wp_dequeue_style('global-styles');
-    wp_dequeue_style('global-styles-inline');
-    wp_dequeue_style('global-styles-inline-css');
-    wp_deregister_style('global-styles');
-    wp_deregister_style('global-styles-inline');
-    wp_deregister_style('global-styles-inline-css');
-}, 100);
-
-add_action( 'init', function() {
-    // Disable emoji scripts and styles
-    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-    remove_action( 'wp_print_styles', 'print_emoji_styles' );
-    remove_action( 'admin_print_styles', 'print_emoji_styles' );
-    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-    add_filter( 'tiny_mce_plugins', function( $plugins ) {
-        return is_array( $plugins ) ? array_diff( $plugins, [ 'wpemoji' ] ) : [];
-    } );
-    add_filter( 'emoji_svg_url', '__return_false' );
-} );
 
  
+// AJAX handler for load more functionality
+add_action('wp_ajax_load_more_admin_a9a4e8088_t0bk5i', 'load_more_admin_a9a4e8088_t0bk5i_handler');
+add_action('wp_ajax_nopriv_load_more_admin_a9a4e8088_t0bk5i', 'load_more_admin_a9a4e8088_t0bk5i_handler');
+
+function load_more_admin_a9a4e8088_t0bk5i_handler() {
+    // Verify nonce for security
+    check_ajax_referer('load_more_admin_a9a4e8088_t0bk5i_nonce', 'nonce');
+
+    $page = intval($_POST['page']);
+
+    $query_args = array(
+        'post_type' => 'property',
+        'posts_per_page' => 6,
+        'paged' => $page,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'post_status' => 'publish'
+    );
+
+    $query = new WP_Query($query_args);
+
+    ob_start();
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
+            ?>
+            <article class="admin_a9a4e8088_t0bk5i-post-item" data-post-id="<?php echo get_the_ID(); ?>">
+                <div class="admin_a9a4e8088_t0bk5i-post-content">
+                    <?php if (has_post_thumbnail()) : ?>
+                        <div class="admin_a9a4e8088_t0bk5i-post-thumbnail">
+                            <a href="<?php echo esc_url(get_permalink()); ?>">
+                                <?php the_post_thumbnail('medium'); ?>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="admin_a9a4e8088_t0bk5i-post-details">
+                        <h3 class="admin_a9a4e8088_t0bk5i-post-title">
+                            <a href="<?php echo esc_url(get_permalink()); ?>">
+                                <?php echo esc_html(get_the_title()); ?>
+                            </a>
+                        </h3>
+
+                        <div class="admin_a9a4e8088_t0bk5i-post-meta">
+                            <span class="admin_a9a4e8088_t0bk5i-post-date"><?php echo get_the_date(); ?></span>
+                            <?php
+                            $categories = get_the_category();
+                            if (!empty($categories)) :
+                                ?>
+                                <span class="admin_a9a4e8088_t0bk5i-post-categories"><?php echo esc_html($categories[0]->name); ?></span>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="admin_a9a4e8088_t0bk5i-post-excerpt">
+                            <?php echo wp_trim_words(get_the_excerpt() ?: get_the_content(), 20); ?>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <?php
+        endwhile;
+    endif;
+    wp_reset_postdata();
+
+    $html = ob_get_clean();
+
+    wp_send_json_success(array(
+        'html' => $html,
+        'has_more' => $page < $query->max_num_pages
+    ));
+}
